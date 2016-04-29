@@ -1,0 +1,327 @@
+html,body{
+	font-family: 'Roboto', sans-serif;
+	background: #E6E6E6;
+}
+
+/*  globais   */
+.alinha{
+	width: 60em;
+	margin: 0em auto;
+}
+
+.l1,.l2,.l3,.l4{
+	float: left;
+	width: 100%;
+	min-width: 60em;
+}
+
+/*  menu-topo  */
+.menu-topo{
+	top: 1.625em;
+	left: 0em;
+	position: fixed;
+	width: 100%;
+	height: 6.563em;
+	background: rgba(255, 255, 255, .95) url('../img/bg-menu.png') left bottom repeat-x;
+	border-bottom: 28px solid #9A9098;
+	z-index: 50;
+	}
+	.logo-topo{
+		position: absolute;
+		left: 0em;
+		top: -3.6em;
+		width: 24.688em;
+		height: 18.125em;
+		overflow: hidden;
+		text-indent: -9999px;
+		background: url('../img/logo-topo.png') left top no-repeat;
+		background-size: auto 100%;
+		z-index: 1;
+		-webkit-transition: all .25s ease;
+		   -moz-transition: all .25s ease;
+		    -ms-transition: all .25s ease;
+		     -o-transition: all .25s ease;
+		        transition: all .25s ease;
+	}
+	.menu-topo nav{
+		position: absolute;
+		right: 0em;
+		top: 0em;
+		width: 43.5em;
+		height: 5.625em;
+		overflow: hidden;
+		}
+		.menu-topo li{
+			float: left;	
+			}
+			.menu-topo li a{
+				float: left;
+				height: 5.625em;
+				overflow: hidden;
+				text-indent: -9999px;
+				overflow: hidden;
+				color: #FFF;
+				-webkit-transform: scale(1);
+				   -moz-transform: scale(1);
+				    -ms-transform: scale(1);
+				     -o-transform: scale(1);
+				        transform: scale(1);
+					}
+					.menu-topo li a:hover{
+						-webkit-transform: scale(.95);
+						   -moz-transform: scale(.95);
+						    -ms-transform: scale(.95);
+						     -o-transform: scale(.95);
+						        transform: scale(.95);
+					}
+				.menu-topo li a.btn01{
+					width: 8.750em;
+					background: url('../img/btn01.png') 0em 0em no-repeat;
+					background-size: auto 100%;
+				}
+				.menu-topo li a.btn02{
+					width: 10.938em;
+					margin: 0em 0em 0em 0.875em;
+					background: url('../img/btn02.png') 0em 0em no-repeat;
+					background-size: auto 100%;
+				}
+				.menu-topo li a.btn03{
+					width: 9.063em;
+					height: 2.813em;
+					margin: 1.375em 0em 1.375em 0.875em;
+					background: #736971 url('../img/btn03.png') center 0em no-repeat;
+					background-size: auto 100%;
+					border-radius: .5em;
+				}
+				.menu-topo li a.btn04{
+					width: 9.063em;
+					height: 2.813em;
+					margin: 1.375em 0em 1.375em 0.875em;
+					background: #E3E3E3 url('../img/btn04.png') center 0em no-repeat;
+					background-size: auto 100%;
+					border-radius: .5em;
+				}
+				.menu-topo li a.btn05{
+					width: 1.688em;
+					height: 1.688em;
+					margin: 2em 0.25em 2em 0.875em;
+					background: url('../img/btn05.png') 0em 0em no-repeat;
+					background-size: auto 100%;
+				}
+
+/*  banners    */
+.l1{
+	height: 37.5em;
+	background: #CCC;
+	border-bottom: 15px solid #9A9098;
+}
+
+/*  artistas   */
+.l2{
+	background: #FFF;
+	height: 39.688em;
+}
+
+/*  bares      */
+.l3{
+	background: #FFB200;
+	height: 35.625em;
+}
+
+/*  contato    */
+.l4{
+	min-height: 25.688em;
+	background: url('../img/logo-rodape.png') right top no-repeat;
+	}
+	.contato,
+	.contato header,
+	.contato header h4,
+	.contato footer{
+		float: left;
+		width: 60em;
+	}
+	.contato{
+		height: 25.688em;
+		padding: 1em 0em;
+		}
+		.contato header{
+			height: 2.5em;
+			margin-bottom: 2.688em;
+			}
+			.contato header h4{
+				height: 2.5em;
+				background: url('../img/titulo-fale-conosco.png') left top no-repeat;
+				background-size: auto 100%;
+				overflow: hidden;
+				text-indent: -9999px;
+			}
+			.form-contato{
+				float: left;
+				width: 45.625em;
+				min-height: 1em;
+				margin-bottom: 1em;
+				}
+				.form-contato div.campo01{
+					float: left;
+					width: 25.625em;
+					margin-bottom: .625em;	
+					}
+					.form-contato div.campo01 label{
+						float: left;
+						width: 7.188em;
+						line-height: 2.1em;
+						text-align: right;
+						padding-right:.750em;
+						color: #E06919;
+						text-transform: uppercase;
+					}
+					.form-contato div.campo01 input{
+							float: left;
+							width: 16.4em;
+							height: 0.875em;
+							border: 1px solid #999;
+							padding: .5em;
+							color: #444;
+							background: #F5F5F5;
+							-webkit-transition: all .25s ease;
+							   -moz-transition: all .25s ease;
+							    -ms-transition: all .25s ease;
+							     -o-transition: all .25s ease;
+							        transition: all .25s ease;
+						}
+						.form-contato div.campo01 input.fone{
+							width: 10em;
+						}
+				.form-contato div.campo02{
+					float: right;
+					width: 18.750em;
+					height: 10.1em;	
+					}
+					.form-contato div.campo02 label{
+						float: left;
+						line-height: 2.65em;
+						color: #E06919;
+						text-transform: uppercase;
+
+					}
+					.form-contato div.campo02 textarea{
+						width: 17.65em;
+						height: 6.43em;
+						border: 1px solid #999;
+						padding: .5em;
+						color: #444;
+						background: #F5F5F5;
+						resize: none;
+						-webkit-transition: all .25s ease;
+						   -moz-transition: all .25s ease;
+						    -ms-transition: all .25s ease;
+						     -o-transition: all .25s ease;
+						        transition: all .25s ease;
+					}
+					.form-contato div.campo01 input:focus,
+					.form-contato div.campo02 textarea:focus{
+							background: #FFF;
+							border: 1px solid #E06919;
+							box-shadow: 0em 0em .5em #E06919;
+						}
+				.form-contato div.campo03{
+					float: left;
+					width: 45.625em;	
+					}
+					.form-contato div.campo03 input{
+						float: right;
+						width: 9em;
+						height: 2em;
+						color: #E06919;
+						background: #D1D1D1;
+						border: 1px solid #999;
+						font-weight: bold;
+						letter-spacing:.1em;
+						cursor: pointer;
+						-webkit-transition: all .25s ease;
+						   -moz-transition: all .25s ease;
+						    -ms-transition: all .25s ease;
+						     -o-transition: all .25s ease;
+						        transition: all .25s ease;
+						}
+						.form-contato div.campo03 input:hover{
+							color: #FFF;
+							background: #E06919;
+							border: 1px solid #E06919;
+							box-shadow: 0em 0em .5em #E06919;
+						}
+	.contato footer{
+		float: left;
+		width: 40em;
+		height: 4em;
+		margin: 1.438em 0em 1em 3.750em;
+		}
+		.contato footer div.fone{
+			float: left;
+			width: 20.438em;
+			height: 4em;
+			background: url('../img/cellphone-rodape.jpg') left .5em no-repeat;
+			padding-left: 3em;
+			}
+			.contato footer div.fone p{
+				font-size: 1em;
+				line-height: 1em;
+				color: #666;
+				}
+				.contato footer div.fone p.destaca-fone{
+					font-size: 1.95em;
+					line-height: 1.5em;
+					color: #E06919;
+				}
+				.contato footer div.fone p.destaca-fone small{
+					font-size: .6em;
+				}
+		.contato footer div.face-bottom{
+			float: left;
+			width: 15.313em;
+			height: 4em;	
+			}
+			.contato footer div.face-bottom p{
+				font-size: 1em;
+				line-height: 1em;
+				color: #666;
+			}
+			.contato footer div.face-bottom a{
+				float: left;
+				font-size: 1.85em;
+				line-height: 1.5em;
+				color: #E06919;
+				padding-left: 1.25em;
+				background: url('../img/btn-fb-rodape.jpg') 0em .25em no-repeat;
+				background-size: auto 70%;
+				}
+				.contato footer div.face-bottom a:hover{
+					text-shadow: 0em 0em .5em #E06919;
+				}
+
+
+/*  inferior a 1130px  */
+@media only screen and (max-width: 1130px) {
+   .logo-topo{
+		left: -3.6em;
+	} 
+}
+
+
+/*  inferior a 940px  */
+@media only screen and (max-width: 940px) {
+   body{
+		font-size:14px;
+   }
+
+   .menu-topo nav{
+		
+		}
+	   	.menu-topo li a{
+	   		height: 5.5em;
+	   	}
+
+	.l4{
+		background-size: auto 20em;
+	} 
+}
