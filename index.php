@@ -2,7 +2,32 @@
 get_header(); ?>
 
 <div class="l1">
-
+	<div class="banner-principal">
+		<ul>
+			<li>
+				<div class="foto-banda">
+					<img src="<?php echo get_template_directory_uri(). '/img/banner/banda01/foto.jpg' ?>" alt="">
+				</div>
+				<div class="tarja-laranja"></div>
+				<div class="alinha">
+					<div class="logo-banda">
+						<img src="<?php echo get_template_directory_uri(). '/img/banner/banda01/logo.jpg' ?>" alt="">
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="foto-banda">
+					<img src="<?php echo get_template_directory_uri(). '/img/banner/banda02/foto.jpg' ?>" alt="">
+				</div>
+				<div class="tarja-laranja"></div>
+				<div class="alinha">
+					<div class="logo-banda">
+						<img src="<?php echo get_template_directory_uri(). '/img/banner/banda02/logo.jpg' ?>" alt="">
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
 </div>
 
 <div class="l2">
@@ -13,10 +38,11 @@ get_header(); ?>
 		</header>
 		<div class="artistas">
 			<a href="#" class="plus">+</a>
+			<span class="plus-sombra"></span>
 			<ul>
 				<?php $loop = new WP_Query( array( 'post_type' => 'artista', 'posts_per_page' => 4 ) ); ?>
 				<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
-					<?php $old = $post; ?>
+					<?php $old = $post; $data_evento=null; ?>
 					<li>
 						<div class="artista-img">
 							<?php
@@ -30,8 +56,9 @@ get_header(); ?>
 									)
 								)
 							));
-							foreach( $events as $doctor ):
-								echo get_the_post_thumbnail( $doctor->ID );
+							foreach( $events as $event ):
+								$data_evento = get_field('_EventStartDate', $event->ID);
+								echo get_the_post_thumbnail($event->ID );
 							endforeach; ?>
 							<?php
 								$post = $old;  // reset the post from the main loop
@@ -41,7 +68,11 @@ get_header(); ?>
 							<?php the_post_thumbnail(); ?>
 						</div>
 						<div class="artista-data">
-							<span> <?php the_title(); ?> </span>
+							<?php if(!is_null($data_evento)) { ?>
+								<span> <?php echo date_i18n('d.F /H\H', strtotime($data_evento )) ?> </span>
+							<?php } else { ?>
+								<span>Sem show</span>
+							<?php } ?>
 							<a href="#">Local</a>
 						</div>
 						<a href="#" class="artista-contrate">Contrate</a>
@@ -53,12 +84,30 @@ get_header(); ?>
 </div>
 <div class="l3">
 	<div class="alinha">
+	<header>
+		<h3>Bares e casas noturnas</h3>
+		<a href="#" class="exibir-todos">Exibir Todos</a>
+	</header>
 		<div class="bares">
-			<h3>Bares e casas noturnas</h3>
-			<a href="#" class="exibir-todos">Exibir Todos</a>
-			<div class="exibe-bares">
-
-			</div>
+			<a href="#" class="plus">+</a>
+			<span class="plus-sombra"></span>
+			<ul>
+				<?php $loop = new WP_Query( array( 'post_type' => 'tribe_venue', 'posts_per_page' => 4 ) ); ?>
+				<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+				<li>
+					<div class="bar-logo">
+						<?php the_post_thumbnail(); ?>
+					</div>
+					<div class="bar-img">
+						<?php echo wp_get_attachment_image(get_field('secondary_image'), 'events-thumbnail'); ?>
+					</div>
+					<div class="bar-shows">
+						<span>pr&oacute;ximos shows</span>
+						<a href="#"></a>
+					</div>
+				</li>
+				<?php endwhile; wp_reset_query();  ?>
+			</ul>
 		</div>
 	</div>
 </div>
