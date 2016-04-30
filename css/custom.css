@@ -1,5 +1,5 @@
 html,body{
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Ubuntu', sans-serif;
 	background: #E6E6E6;
 }
 
@@ -19,7 +19,7 @@ html,body{
 .menu-topo{
 	top: 1.625em;
 	left: 0em;
-	position: fixed;
+	position: absolute;
 	width: 100%;
 	height: 6.563em;
 	background: rgba(255, 255, 255, .95) url('../img/bg-menu.png') left bottom repeat-x;
@@ -52,7 +52,7 @@ html,body{
 		overflow: hidden;
 		}
 		.menu-topo li{
-			float: left;	
+			float: left;
 			}
 			.menu-topo li a{
 				float: left;
@@ -114,19 +114,179 @@ html,body{
 	height: 37.5em;
 	background: #CCC;
 	border-bottom: 15px solid #9A9098;
-}
+	}
 
 /*  artistas   */
 .l2{
+	min-height: 39.688em;
 	background: #FFF;
-	height: 39.688em;
-}
+	}
+	.l2 header{
+		float: left;
+		width: 60em;
+		height: 3.438em;
+		margin: .45em 0em 1.75em 0em;
+		background: url('../img/bg-l2-header.jpg') 0em 0em no-repeat;
+		}
+		.l2 header h2{
+			float: left;
+			width: 12.2em;
+			height: 3.125em;
+			overflow: hidden;
+			text-indent: -9999px;
+			background: url('../img/titulo-artistas.png') 0em 0em no-repeat;
+			background-size: auto 100%;
+		}
+		.l2 header a{
+			float: left;
+			width: 8.8em;
+			height: 1.838em;
+			padding: 1.6em 0em 0em 2.5em;
+			background: url('../img/btn-l2-header-vertodos.gif') 0em 1.25em no-repeat;
+			color: #ADADB2;
+			font-size: 1em;
+			text-transform: uppercase;
+			}
+			.l2 header a:hover{
+				color: #888;
+				text-shadow:0em 0em .5em rgba(173,173,178,1);
+				text-indent: .5em;
+			}
+	.artistas{
+		float: left;
+		width: 58.125em;
+		height: 31.875em;
+		margin: 0em 0.938em;
+		overflow: hidden;
+		position: relative;
+		}
+		.artistas ul{
+			float: left;
+			width: 60em;
+			height: 31.875em;
+			margin-left: -1.875em;
+			}
+			.artistas li,
+			.artista-img,
+			.artista-logo,
+			.artista-data,
+			.artista-contrate{
+				float: left;
+				width: 13.125em;
+			}
+			.artistas li{
+				height: 31.875em;
+				margin-left: 1.875em;
+				-webkit-transition: all .25s ease;
+				   -moz-transition: all .25s ease;
+				    -ms-transition: all .25s ease;
+				     -o-transition: all .25s ease;
+				        transition: all .25s ease;
+				-webkit-transform: scale(1);
+				   -moz-transform: scale(1);
+				    -ms-transform: scale(1);
+				     -o-transform: scale(1);
+				        transform: scale(1);
+				}
+				.artistas li:hover{
+					-webkit-transform: scale(.98);
+					   -moz-transform: scale(.98);
+					    -ms-transform: scale(.98);
+					     -o-transform: scale(.98);
+					        transform: scale(.98);
+				}
+				.artista-img{
+					height: 13.125em;
+					background: #F5F5F5;
+					overflow: hidden;
+					}
+					.artista-img img{
+						width: 100%;
+						height: 100%;
+					}
+				.artista-logo{
+					height: 11.875em;
+					overflow: hidden;
+					}
+					.artista-logo img{
+						width: 100%;
+						height: 100%;
+					}
+				.artista-data{
+					float: left;
+					height: 2.813em;
+					background: #CD7979 url('../img/bg-artista-data.png') 0em 0em no-repeat;
+					background-size: auto 100%;
+					margin-bottom: 1.250em;
+					}
+					.artista-data span{
+						float: left;
+						color: #FFF;
+						width: 7em;
+						height: 2.813em;
+						line-height: 2.813em;
+						font-weight: bold;
+						margin-left: 3em;
+						text-transform: uppercase;
+						overflow: hidden;
+					}
+					.artista-data a{
+						float: right;
+						width: 2.813em;
+						height: 2.813em;
+						overflow: hidden;
+						text-indent:-9999px;
+						background: #915656 url('../img/bg-artista-local.png') 0em 0em no-repeat;
+						background-size: auto 100%;
+						}
+						.artista-data a:hover{
+							box-shadow: 0em 0em .5em  #915656;
+						}
+				.artista-contrate{
+					height: 2.813em;
+					overflow: hidden;
+					text-indent: -9999px;
+					background: url('../img/btn-contrate.png') 0em 0em no-repeat;
+					background-size: auto 100%;
+					border-radius:.5em;
+					-webkit-transform: scale(1);
+					   -moz-transform: scale(1);
+					    -ms-transform: scale(1);
+					     -o-transform: scale(1);
+					        transform: scale(1);
+					}
+					.artista-contrate:hover{
+						-webkit-transform: scale(.95);
+						   -moz-transform: scale(.95);
+						    -ms-transform: scale(.95);
+						     -o-transform: scale(.95);
+						        transform: scale(.95);
+					}
+
 
 /*  bares      */
 .l3{
 	background: #FFB200;
 	height: 35.625em;
 }
+
+/*  Botao Plus  */
+a.plus{
+	position: absolute;
+	right: 0em;
+	top: 0em;
+	width: 7.5em;
+	height: 33.75em;
+	background: rgba(255, 255, 255, 0.8) url('../img/btn-plus.png') .9em 12em no-repeat;
+	background-size: 5.438em auto;
+	overflow: hidden;
+	text-indent: -9999px;
+	z-index: 30;
+	}
+	a.plus:hover{
+		background: rgba(255, 255, 255, 0.95) url('../img/btn-plus.png') 1em 12.5em no-repeat;
+		background-size: 5em auto;
+	}
 
 /*  contato    */
 .l4{
@@ -164,7 +324,7 @@ html,body{
 				.form-contato div.campo01{
 					float: left;
 					width: 25.625em;
-					margin-bottom: .625em;	
+					margin-bottom: .625em;
 					}
 					.form-contato div.campo01 label{
 						float: left;
@@ -195,7 +355,7 @@ html,body{
 				.form-contato div.campo02{
 					float: right;
 					width: 18.750em;
-					height: 10.1em;	
+					height: 10.1em;
 					}
 					.form-contato div.campo02 label{
 						float: left;
@@ -226,7 +386,7 @@ html,body{
 						}
 				.form-contato div.campo03{
 					float: left;
-					width: 45.625em;	
+					width: 45.625em;
 					}
 					.form-contato div.campo03 input{
 						float: right;
@@ -264,9 +424,10 @@ html,body{
 			padding-left: 3em;
 			}
 			.contato footer div.fone p{
-				font-size: 1em;
+				font-size: .95em;
 				line-height: 1em;
 				color: #666;
+				font-weight: 300;
 				}
 				.contato footer div.fone p.destaca-fone{
 					font-size: 1.95em;
@@ -279,12 +440,13 @@ html,body{
 		.contato footer div.face-bottom{
 			float: left;
 			width: 15.313em;
-			height: 4em;	
+			height: 4em;
 			}
 			.contato footer div.face-bottom p{
-				font-size: 1em;
+				font-size: .95em;
 				line-height: 1em;
 				color: #666;
+				font-weight: 300;
 			}
 			.contato footer div.face-bottom a{
 				float: left;
@@ -304,7 +466,7 @@ html,body{
 @media only screen and (max-width: 1130px) {
    .logo-topo{
 		left: -3.6em;
-	} 
+	}
 }
 
 
@@ -315,7 +477,7 @@ html,body{
    }
 
    .menu-topo nav{
-		
+
 		}
 	   	.menu-topo li a{
 	   		height: 5.5em;
@@ -323,5 +485,5 @@ html,body{
 
 	.l4{
 		background-size: auto 20em;
-	} 
+	}
 }

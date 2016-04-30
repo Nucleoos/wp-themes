@@ -10,4 +10,8 @@ function showbook_theme_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'showbook_theme_scripts' );
 
+add_theme_support( 'post-thumbnails', array ('tribe_events', 'artista') );
+set_post_thumbnail_size( 210, 190, true );
+add_image_size( 'events-thumbnail', 219, 210, true );
+
  ?>
