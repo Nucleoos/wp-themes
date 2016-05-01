@@ -21,6 +21,7 @@ $event_id = get_the_ID();
 
 ?>
 
+<div class="container">
 <div id="tribe-events-content" class="tribe-events-single">
 
 	<p class="tribe-events-back">
@@ -43,6 +44,7 @@ $event_id = get_the_ID();
 
 	<!-- Event header -->
 	<div id="tribe-events-header" <?php tribe_events_the_header_attributes() ?>>
+
 		<!-- Navigation -->
 		<h3 class="tribe-events-visuallyhidden"><?php printf( esc_html__( '%s Navigation', 'the-events-calendar' ), $events_label_singular ); ?></h3>
 		<ul class="tribe-events-sub-nav">
@@ -62,13 +64,12 @@ $event_id = get_the_ID();
 			<?php do_action( 'tribe_events_single_event_before_the_content' ) ?>
 			<div class="tribe-events-single-event-description tribe-events-content">
 				<?php the_content(); ?>
-                askdjakslj
 			</div>
-			<!-- .tribe-events-single-event-description -->
-			<?php do_action( 'tribe_events_single_event_after_the_content' ) ?>
+
 
 			<!-- Event meta -->
 			<?php do_action( 'tribe_events_single_event_before_the_meta' ) ?>
+
 			<?php tribe_get_template_part( 'modules/meta' ); ?>
 			<?php do_action( 'tribe_events_single_event_after_the_meta' ) ?>
 		</div> <!-- #post-x -->
@@ -88,3 +89,4 @@ $event_id = get_the_ID();
 	<!-- #tribe-events-footer -->
 
 </div><!-- #tribe-events-content -->
+</div>

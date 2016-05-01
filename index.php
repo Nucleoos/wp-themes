@@ -1,115 +1,17 @@
-<?php
-get_header(); ?>
+<?php get_header(); ?>
 
-<div class="l1">
-	<div class="banner-principal">
-		<ul>
-			<li>
-				<div class="foto-banda">
-					<img src="<?php echo get_template_directory_uri(). '/img/banner/banda01/foto.jpg' ?>" alt="">
-				</div>
-				<div class="tarja-laranja"></div>
-				<div class="alinha">
-					<div class="logo-banda">
-						<img src="<?php echo get_template_directory_uri(). '/img/banner/banda01/logo.jpg' ?>" alt="">
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="foto-banda">
-					<img src="<?php echo get_template_directory_uri(). '/img/banner/banda02/foto.jpg' ?>" alt="">
-				</div>
-				<div class="tarja-laranja"></div>
-				<div class="alinha">
-					<div class="logo-banda">
-						<img src="<?php echo get_template_directory_uri(). '/img/banner/banda02/logo.jpg' ?>" alt="">
-					</div>
-				</div>
-			</li>
-		</ul>
-	</div>
-</div>
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
 
-<div class="l2">
-	<div class="alinha">
-		<header>
-			<h2>Artistas</h2>
-			<a href="#" class="exibir-todos">Exibir Todos</a>
-		</header>
-		<div class="artistas">
-			<a href="#" class="plus">+</a>
-			<span class="plus-sombra"></span>
-			<ul>
-				<?php $loop = new WP_Query( array( 'post_type' => 'artista', 'posts_per_page' => 4 ) ); ?>
-				<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
-					<?php $old = $post; $data_evento=null; ?>
-					<li>
-						<div class="artista-img">
-							<?php
-							$events = get_posts(array(
-								'post_type' => 'tribe_events',
-								'meta_query' => array(
-									array(
-										'key' => 'artistas', // name of custom field
-										'value' => '"' . get_the_ID() . '"', // matches exaclty "123", not just 123. This prevents a match for "1234"
-										'compare' => 'LIKE'
-									)
-								)
-							));
-							foreach( $events as $event ):
-								$data_evento = get_field('_EventStartDate', $event->ID);
-								echo get_the_post_thumbnail($event->ID );
-							endforeach; ?>
-							<?php
-								$post = $old;  // reset the post from the main loop
-                                $id = $old->ID; ?>
-						</div>
-						<div class="artista-logo">
-							<?php the_post_thumbnail(); ?>
-						</div>
-						<div class="artista-data">
-							<?php if(!is_null($data_evento)) { ?>
-								<span> <?php echo date_i18n('d.F /H\H', strtotime($data_evento )) ?> </span>
-							<?php } else { ?>
-								<span>Sem show</span>
-							<?php } ?>
-							<a href="#">Local</a>
-						</div>
-						<a href="#" class="artista-contrate">Contrate</a>
-					</li>
-				<?php endwhile; wp_reset_query();  ?>
-			</ul>
-		</div>
-	</div>
-</div>
-<div class="l3">
-	<div class="alinha">
-	<header>
-		<h3>Bares e casas noturnas</h3>
-		<a href="#" class="exibir-todos">Exibir Todos</a>
-	</header>
-		<div class="bares">
-			<a href="#" class="plus">+</a>
-			<span class="plus-sombra"></span>
-			<ul>
-				<?php $loop = new WP_Query( array( 'post_type' => 'tribe_venue', 'posts_per_page' => 4 ) ); ?>
-				<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
-				<li>
-					<div class="bar-logo">
-						<?php the_post_thumbnail(); ?>
-					</div>
-					<div class="bar-img">
-						<?php echo wp_get_attachment_image(get_field('secondary_image'), 'events-thumbnail'); ?>
-					</div>
-					<div class="bar-shows">
-						<span>pr&oacute;ximos shows</span>
-						<a href="#"></a>
-					</div>
-				</li>
-				<?php endwhile; wp_reset_query();  ?>
-			</ul>
-		</div>
-	</div>
-</div>
+			<?php while ( have_posts() ) : the_post(); ?>
+				<h1><?php the_title(); ?></h1>
+				<p>
+					<?php the_content(); ?>
+				</p>				
+			<?php endwhile; // end of the loop. ?>
+
+		</main><!-- .site-main -->
+	</div><!-- .content-area -->
+
 
 <?php get_footer(); ?>

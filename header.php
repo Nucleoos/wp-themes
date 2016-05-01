@@ -21,13 +21,15 @@
 <body>
     <header>
         <div class="menu-topo">
-    		<div class="logo-topo">
-    			Show Book
-    		</div>
+            <a href="/home/">
+        		<div class="logo-topo">
+                    Show Book
+        		</div>
+            </a>
     		<nav>
     			<ul>
-    				<li><a href="#" class="btn01">Artistas</a></li>
-    				<li><a href="#" class="btn02">Bares e Casas Noturnas</a></li>
+    				<li><a href="/events" class="btn01">Artistas</a></li>
+    				<li><a href="/events" class="btn02">Bares e Casas Noturnas</a></li>
     				<li><a href="#" class="btn03">Fa&ccedil;a Parte</a></li>
     				<li><a href="#" class="btn04">Contrate</a></li>
     				<li><a href="#" class="btn05">Facebook</a></li>

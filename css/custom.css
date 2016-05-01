@@ -18,6 +18,11 @@ html,body{
 
 main {
 	margin-top:133px;
+	background-color: #fff;
+}
+.container {
+	width:80%;
+	margin: 40px auto;
 }
 
 /*  menu-topo  */
@@ -240,7 +245,7 @@ main {
 		}
 		.artistas ul{
 			float: left;
-			width: 58.125em;
+			width: 158.125em;
 			height: 31.875em;
 			}
 			.artistas li,
@@ -398,7 +403,7 @@ main {
 
 			.bares ul{
 				float: left;
-				width: 58.125em;
+				width: 158.125em;
 				height: 28.125em;
 				}
 				.bares li,
@@ -486,10 +491,10 @@ main {
 /*  Botao Plus  */
 a.plus{
 	position: absolute;
-	right: 0em;
-	top: 0em;
+	right: 1em;
+	top: 90px;
 	width: 7.5em;
-	height: 33.75em;
+	height: 450px;
 	background: rgba(255, 255, 255, 0.8) url('../img/btn-plus.png') .9em 12em no-repeat;
 	background-size: 5.438em auto;
 	overflow: hidden;
@@ -502,10 +507,10 @@ a.plus{
 	}
 	.plus-sombra{
 		position: absolute;
-		right: 7.5em;
-		top: 0em;
+		right: 8.5em;
+		top: 90px;
 		width: 1.188em;
-		height: 33.75em;
+		height: 450px;
 		background: url('../img/btn-plus-sombra.png') right top no-repeat;
 		background-size: auto 100%;
 		z-index: 30;
