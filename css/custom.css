@@ -135,7 +135,7 @@ main {
 	}
 	#pag{
 		position: absolute;
-		left: 25em;
+		right: .5em;
 		bottom: .86em;
 		z-index: 20;
 		}
