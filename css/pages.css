@@ -1,6 +1,21 @@
+main {
+	margin-top:133px;
+	background-color: #fff;
+}
+.container {
+	width:80%;
+	margin: 40px auto;
+}
+
 .logo-topo {
     top:auto;
     left: 6em;
     height: 8.125em;
     background-size: auto 126%;
+}
+.nicemodal-window {
+	z-index: 100;
+}
+.nicemodal-overlay {
+	z-index: 100;
 }
