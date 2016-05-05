@@ -13,9 +13,3 @@ main {
     height: 8.125em;
     background-size: auto 126%;
 }
-.nicemodal-window {
-	z-index: 100;
-}
-.nicemodal-overlay {
-	z-index: 100;
-}

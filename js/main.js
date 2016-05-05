@@ -20,11 +20,34 @@ jQuery(function($) {
         direction: 'h',
         distance: 235,
     });
+
+    /*  Abre e fecha faça parte  */
+    $(".fecha-janela").click(function() {
+        $(".faca-parte").removeClass('mostra-janela');
+        $(".banda-detalhe").removeClass('mostra-janela');
+        $(".fundo-escuro").removeClass('mostra-fundo');
+        setTimeout(function() {
+            $(
+                ".faca-parte,.banda-detalhe,.fundo-escuro"
+            ).hide('fast');
+        }, 100);
+    })
+
+    $(".btn03").click(function() {
+        $(".faca-parte").addClass('mostra-janela');
+        $(".fundo-escuro").addClass('mostra-fundo');
+        setTimeout(function() {
+            $(".faca-parte,.fundo-escuro").show('fast');
+        }, 500);
+    })
+
     $(".btn-contrate-banda").click(function() {
         $(".quero-show").toggle("fast", function() {});
     });
-    $('#open-artista').nicemodal({
-        width: '900px'
+
+
+    $('.venobox').venobox({
+        border: '6px'
     });
 });
 

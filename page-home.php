@@ -1,6 +1,7 @@
 <?php
 get_header(); ?>
 
+
 <div class="l1">
 	<div class="banner-principal">
 		<ul>
@@ -75,7 +76,7 @@ get_header(); ?>
 							<?php } ?>
 							<a href="#">Local</a>
 						</div>
-						<a id="open-artista" href="<?php the_permalink(); ?>" class="artista-contrate">Contrate</a>
+						<a href="<?php the_permalink(); ?>" class="artista-contrate">Contrate</a>
 					</li>
 				<?php endwhile; wp_reset_query();  ?>
 			</ul>

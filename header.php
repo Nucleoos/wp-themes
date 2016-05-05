@@ -37,4 +37,81 @@
     		</nav>
     	</div>
     </header>
+    <div class="faca-parte">
+    	<header>
+    		<h3>Fa&ccedil;a Parte</h3>
+    		<div class="fecha-janela">
+    			Fechar
+    		</div>
+    		<a href="#" class="btn-modalidades"> Modalidades de Parceria</a>
+    	</header>
+    	<div class="content-faca-parte">
+    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, iste! Aspernatur natus quis cumque molestias harum facilis pariatur, ducimus placeat. Quis minima facilis nihil amet minus consectetur alias nisi aliquam.</p>
+    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis minus facere consequatur molestiae velit eos esse cum autem ea eius.</p>
+    		<div class="logo-faca-parte"></div>
+    	</div>
+    	<div class="form-faca-parte">
+    		<form action="">
+    			<div class="campo01">
+    				<label>Nome:</label>
+    				<input type="text" name="nome">
+    			</div>
+    			<div class="campo02">
+    				<label>RG:</label>
+    				<input type="text" name="rg">
+    			</div>
+    			<div class="campo02">
+    				<label class="cpf">CPF:</label>
+    				<input type="text" name="cpf" class="campo-cpf">
+    			</div>
+    			<div class="campo01">
+    				<label>Email:</label>
+    				<input type="text" name="email">
+    			</div>
+    			<div class="campo01">
+    				<label>Telefone:</label>
+    				<input type="text" name="telefone">
+    			</div>
+    			<div class="campo01">
+    				<label>Endere&ccedil;o:</label>
+    				<input type="text" name="endereco">
+    			</div>
+    			<div class="campo02">
+    				<label>Atua&ccedil;&atilde;o:</label>
+    				<input type="text" name="atuacao">
+    			</div>
+    			<div class="campo02">
+    				<label>Estilo:</label>
+    				<input type="text" name="estilo">
+    			</div>
+    			<div class="campo01">
+    				<label>Site:</label>
+    				<input type="text" name="site">
+    			</div>
+    			<div class="campo01">
+    				<label>Facebook:</label>
+    				<input type="text" name="facebook">
+    			</div>
+    			<div class="campo03">
+    				<label>Modalidade Escolhida:</label>
+    				<div>
+    					<input type="radio" name="modalidade" value="Modal X"> Modal X
+    				</div>
+    				<div>
+    					<input type="radio" name="modalidade" value="Modal Y"> Modal Y
+    				</div>
+    				<div>
+    					<input type="radio" name="modalidade" value="Modal Z"> Modal Z
+    				</div>
+    			</div>
+    			<div class="campo03">
+    				<p><input type="checkbox" name="aceito" value="aceito">Eu li e estou de acordo com o contrato de parceria.</p>
+    			</div>
+    			<div class="campo03">
+    				<input type="submit" type="submit" name="submit" value="QUERO FAZER PARTE!" class="btn-enviar-2">
+    			</div>
+    		</form>
+    	</div>
+    </div>
+    <div class="fundo-escuro"></div>
     <main style="min-height:40%;">
