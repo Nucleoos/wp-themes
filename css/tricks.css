@@ -1,6 +1,19 @@
-.nicemodal-window {
-	z-index: 100;
+.artistas ul {
+    width: 158.125em;
 }
-.nicemodal-overlay {
-	z-index: 100;
+.bares ul {
+    width: 158.125em;
+}
+a.plus {
+    top:105px;
+    right: 1em;
+    height: 27.75em;
+}
+.plus-sombra {
+    top: 90px;
+    right: 8.5em;
+    height: 27.75em;
+}
+header {
+    min-height: 4.375em;
 }

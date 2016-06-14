@@ -11,8 +11,7 @@ jQuery(function($) {
                 });
         })
     });
-
-    $('.artistas').scrollbox({
+    $('#artistas-carossel').scrollbox({
         direction: 'h',
         distance: 235,
     });
@@ -43,11 +42,6 @@ jQuery(function($) {
 
     $(".btn-contrate-banda").click(function() {
         $(".quero-show").toggle("fast", function() {});
-    });
-
-
-    $('.venobox').venobox({
-        border: '6px'
     });
 });
 

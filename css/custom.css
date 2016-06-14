@@ -29,7 +29,7 @@ html,body{
 	}
 	.logo-topo{
 		position: absolute;
-		left: 0em;
+		left: -8em;
 		top: -3.6em;
 		width: 24.688em;
 		height: 18.125em;
@@ -110,9 +110,49 @@ html,body{
 					background-size: auto 100%;
 				}
 
+/*  menu-interno  */
+.menu-interno{
+	height: 4.375em;
+	border-bottom: 14px solid #9A9098;
+	}
+	.menu-interno nav{
+		width: 42em;
+	}
+	.menu-interno .logo-topo{
+		left: -3em;
+		top: -3em;
+		width: 20em;
+		height: 13em;
+	}
+	.menu-interno nav,
+	.menu-interno li a{
+		height: 4.375em;
+		}
+		.menu-interno li a.btn01,
+		.menu-interno li a.btn02{
+			background-position: 0em -.5em;
+		}
+		.menu-interno li a.btn01{
+			width: 8em;
+		}
+		.menu-interno li a.btn02{
+			width: 10em;
+		}
+		.menu-interno li a.btn03{
+			height: 2.5em;
+			margin: .5em 0em 0em 0.275em;
+		}
+		.menu-interno li a.btn04{
+			height: 2.5em;
+			margin: .5em 0em 0em 1.2em;
+		}
+		.menu-interno li a.btn05{
+			margin: 1em 0.25em 0em 0.875em;
+		}
+
 /*  banners    */
 .l1{
-	height: 37.5em;
+	min-height: 27.5em;
 	background: #EEE;
 	border-bottom: 15px solid #9A9098;
 	}
@@ -189,7 +229,6 @@ html,body{
 						min-height: 35.625em;
 					}
 
-
 /*  artistas   */
 .l2{
 	min-height: 39.688em;
@@ -201,6 +240,7 @@ html,body{
 		height: 3.438em;
 		margin: .45em 0em 1.75em 0em;
 		background: url('../img/bg-l2-header.jpg') 0em 0em no-repeat;
+		position: relative;
 		}
 		.l2 header h2{
 			float: left;
@@ -210,22 +250,153 @@ html,body{
 			text-indent: -9999px;
 			background: url('../img/titulo-artistas.png') 0em 0em no-repeat;
 			background-size: auto 100%;
-		}
-		.l2 header a{
+			}
+			.l2 header a{
+				float: left;
+				width: 8.8em;
+				height: 1.838em;
+				padding: 1.6em 0em 0em 2.5em;
+				background: url('../img/btn-l2-header-vertodos.gif') 0em 1.25em no-repeat;
+				color: #ADADB2;
+				font-size: 1em;
+				text-transform: uppercase;
+				}
+				.l2 header a:hover{
+					color: #888;
+					text-shadow:0em 0em .5em rgba(173,173,178,1);
+					text-indent: .5em;
+				}
+		.l2 h3{
 			float: left;
-			width: 8.8em;
-			height: 1.838em;
-			padding: 1.6em 0em 0em 2.5em;
-			background: url('../img/btn-l2-header-vertodos.gif') 0em 1.25em no-repeat;
-			color: #ADADB2;
-			font-size: 1em;
-			text-transform: uppercase;
+			width: 18em;
+			line-height: 1.45em;
+			color: #999;
+			background: url('../img/bg-titulo-banda-interno.png') 0em .3em no-repeat;
+			font-family: 'Ubuntu Condensed', sans-serif;
+			font-size: 2.8em;
+			padding-left: 1.1em;
+		}
+
+		/**/
+		.l2 header div.btn-contrate-banda{
+			position: absolute;
+			top: 1.35em;
+			right: -7em;
+			width: 13em;
+			height: 2.813em;
+			overflow: hidden;
+			text-indent: -9999px;
+			background: #E3E3E3 url('../img/btn-contrate2.png') center .75em no-repeat;
+			margin-right: 8.75em;
+			border-radius: .5em;
+			cursor: pointer;
+			z-index: 73;
+			-webkit-transition: all .25s ease;
+			   -moz-transition: all .25s ease;
+			    -ms-transition: all .25s ease;
+			     -o-transition: all .25s ease;
+			        transition: all .25s ease;
 			}
-			.l2 header a:hover{
-				color: #888;
-				text-shadow:0em 0em .5em rgba(173,173,178,1);
-				text-indent: .5em;
+			.l2 header div.btn-contrate-banda:hover{
+				box-shadow: 0em 0em .5em rgba(0, 0, 0, 0.5);
 			}
+			.quero-show{
+				position: absolute;
+				top: 3.25em;
+				right: 1.74em !important;
+				width: 12em;
+				height: 15em;
+				padding: 1.5em .5em 1em;
+				background: #FFF;
+				z-index: 72;
+				border-radius: .5em;
+				box-shadow: 0em 0em 1em rgba(0, 0, 0, .5);
+				display: none;
+				}
+				.quero-show div.btn-dia,
+				.quero-show div.btn-local{
+					float: left;
+					width: 5em;
+					height: 2.5em;
+					margin: 0em .5em .75em .5em;
+					overflow: hidden;
+					text-indent: -9999px;
+					cursor: pointer;
+					-webkit-transform: scale(1);
+					   -moz-transform: scale(1);
+					    -ms-transform: scale(1);
+					     -o-transform: scale(1);
+					        transform: scale(1);
+					}
+					.quero-show div.btn-dia{
+						background: url('../img/btn-quero-show-dia.png') 0em 0em no-repeat;
+						background-size: auto 100%;
+					}
+					.quero-show div.btn-local{
+							background: url('../img/btn-quero-show-local.png') 0em 0em no-repeat;
+							background-size: auto 100%;
+						}
+						.quero-show div.btn-dia:hover,
+						.quero-show div.btn-local:hover{
+							 -webkit-transform: scale(.95);
+								-moz-transform: scale(.95);
+								 -ms-transform: scale(.95);
+								  -o-transform: scale(.95);
+								     transform: scale(.95);
+						}
+				.quero-show div.form-dados{
+					float: left;
+					width: 12em;
+					height: 12em;
+					}
+					.quero-show div.campo01{
+						float: left;
+						width: 12em;
+						min-height: 1em;
+						padding-bottom:.25em;
+						}
+						.quero-show div.campo01 label{
+							float: left;
+							width: 12em;
+							line-height: 1.45em;
+							font-size: .8em;
+							text-transform: uppercase;
+							color: #999;
+						}
+						.quero-show div.campo01 input{
+							float: left;
+							width: 10.75em;
+							height: .75em;
+							padding: .45em .5em;
+							color: #555;
+							background: #F5F5F5;
+							border: 1px solid #999;
+							-webkit-transition: all .25s ease;
+							   -moz-transition: all .25s ease;
+							    -ms-transition: all .25s ease;
+							     -o-transition: all .25s ease;
+							        transition: all .25s ease;
+							}
+							.quero-show div.campo01 input:focus{
+								background: #FFF;
+								border: 1px solid #555;
+								box-shadow: 0em 0em .25em rgba(0, 0, 0, 0.5);
+							}
+							.quero-show div.campo01 input.btn-quero-show{
+								width: 11.85em;
+								height: 2em;
+								padding: 0em 0em;
+								border: 1px solid #A46200;
+								margin-top: .5em;
+								color: #FFF;
+								font-weight: 500;
+								background: #ED8C00;
+								cursor: pointer;
+								}
+								.quero-show div.campo01 input.btn-quero-show:hover{
+									box-shadow: 0em 0em .25em rgba(238, 141, 0, 0.85);
+								}
+
 	.artistas{
 		float: left;
 		width: 58.125em;
@@ -335,6 +506,202 @@ html,body{
 						     -o-transform: scale(.95);
 						        transform: scale(.95);
 					}
+
+	/*  Pagian Artista  */
+	.artista-banner,
+	.artista-banner ul,
+	.artista-banner li,
+	.artista-banner img{
+		float: left;
+		width: 100% !important;
+		min-width: 60em;
+	}
+	.artista-banner{
+		height: 27.5em;
+		}
+		.artista-banner ul{
+			height: 27.5em;
+			overflow: hidden;
+			}
+			.artista-banner li{
+				height: 27.5em;
+				}
+				.artista-banner img{
+					height: auto;
+				}
+	.artista{
+		float: left;
+		width: 60em;
+		min-height: 5em;
+		padding-bottom: 1em;
+		}
+		.artista-logo{
+			float: left;
+			width: 11.563em;
+			height: 11.563em;
+			overflow: hidden;
+			}
+			.artista-logo img{
+				float: left;
+				width: 100%;
+				height: 100%;
+			}
+		.artista-conteudo{
+			float: right;
+			width: 45em;
+			min-height: 11.563em;
+			}
+			.artista-conteudo p{
+				font-size:1em;
+				line-height: 1.5em;
+				padding-bottom: 1em;
+				color: #666;
+			}
+		.artista-video{
+			float: left;
+			width: 37.5em;
+			height: 14.375em;
+			}
+			.artista-video a{
+				-webkit-transform: scale(1);
+				   -moz-transform: scale(1);
+				    -ms-transform: scale(1);
+				     -o-transform: scale(1);
+				        transform: scale(1);
+				}
+				.artista-video a:hover{
+					-webkit-transform: scale(.95);
+					   -moz-transform: scale(.95);
+					    -ms-transform: scale(.95);
+					     -o-transform: scale(.95);
+					        transform: scale(.95);
+				}
+			.artista-video .video-principal{
+				float: left;
+				width: 22.25em;
+				height: 12.5em;
+				overflow: hidden;
+				}
+				.artista-video .video-principal a{
+					float: left;
+					width: 22.25em;
+					height: 12.5em;
+					background: #999;
+					}
+					.artista-video .video-principal a img{
+						float: left;
+						width: auto;
+						height: 100%;
+					}
+			.artista-video ul{
+				float: right;
+				width: 14.55em;
+				height: 12.5em;
+				overflow: hidden;
+				margin: 0em 0em 0em -1em;
+				}
+				.artista-video li{
+					float: left;
+					margin: 0em 0em .59em 1em;
+					}
+					.artista-video li a{
+						float: left;
+						width: 3.75em;
+						height: 3.75em;
+						overflow: hidden;
+						}
+						.artista-video li a img{
+							float: left;
+							width: 100%;
+							height: 100%;
+						}
+
+
+		.artista-botoes a.btn01,
+		.artista-botoes div.btn02,
+		.artista-botoes div.btn03{
+			float: left;
+			width: 13.125em;
+			height: 2.813em;
+		}
+		.artista-botoes{
+			float: right;
+			width: 13.125em;
+			height: 14.375em;
+			margin-right: 4.375em;
+			}
+			/*  Botão Facebook  */
+			.artista-botoes a.btn01{
+				color: #FFF;
+				background: #2C5E9D url('../img/btn-face-det-banda.png') .35em .55em no-repeat;
+				margin-bottom: 2em;
+				text-indent: 3em;
+				line-height: 2.813em;
+				font-family:'Ubuntu Condensed',sans-serif;
+				font-size: 1em;
+				letter-spacing: .1em;
+				text-transform: uppercase;
+				}
+				.artista-botoes a.btn01:hover{
+					box-shadow: 0em 0em .25em #2C5E9D;
+				}
+			/*    */
+			.artista-botoes div.btn02{
+				background: #FFF;
+				margin-bottom: 2em;
+				}
+				.artista-botoes div.btn02 a{
+					float: left;
+					width: 6.563em;
+					height: 2.813em;
+					overflow: hidden;
+					text-indent: -9999px;
+					background: url('../img/btn-rider-tecnico.png') 0em 0em no-repeat;
+					background-size: auto 100%;
+					-webkit-transform: scale(1);
+					   -moz-transform: scale(1);
+					    -ms-transform: scale(1);
+					     -o-transform: scale(1);
+					        transform: scale(1);
+					}
+					.artista-botoes div.btn02 a:first-child{
+						background: url('../img/btn-release.png') 0em 0em no-repeat;
+						background-size: auto 100%;
+					}
+					.artista-botoes div.btn02 a:hover{
+						-webkit-transform: scale(.95);
+						   -moz-transform: scale(.95);
+						    -ms-transform: scale(.95);
+						     -o-transform: scale(.95);
+						        transform: scale(.95);
+					}
+			/*    */
+			.artista-botoes div.btn03{
+				background: #E87A7B url('../img/bg-artista-data2.png') .5em .25em no-repeat;
+				}
+				.artista-botoes div.btn03 span{
+					float: left;
+					padding-left: 3.1em;
+					width: 7.20em;
+					line-height: 2.75em;
+					color: #FFF;
+					overflow: hidden;
+					font-family: 'Ubuntu Condensed',sans-serif;
+					font-size: 1em;
+				}
+				.artista-botoes div.btn03 a{
+					float: right;
+					width: 2.813em;
+					height: 2.813em;
+					overflow: hidden;
+					text-indent: -9999px;
+					background: url('../img/bg-artista-local.png') 0em 0em no-repeat;
+					background-size: auto 100%;
+					}
+					.artista-botoes div.btn03 a:hover{
+						box-shadow: 0em 0em .25em #A55556;
+					}
+
 
 
 /*  bares      */
@@ -477,7 +844,6 @@ html,body{
 							.bar-show a:hover{
 								box-shadow: 0em 0em .5em  #915656;
 							}
-
 
 /*  Botao Plus  */
 a.plus{
@@ -908,11 +1274,16 @@ a.plus{
 
 /*  Tela Detalhe Banda  */
 .banda-detalhe{
+	position: absolute;
+	left: 50%;
+	top: 1.25em;
 	width: 60em;
 	height: 58.125em;
+	margin-left: -30em;
 	border-radius: .5em;
 	background: #FFF;
 	z-index: 101;
+	display: none;
 	}
 	.banda-detalhe header{
 		float: left;
@@ -951,7 +1322,7 @@ a.plus{
 			margin-right: 8.75em;
 			border-radius: .5em;
 			cursor: pointer;
-			z-index: 103;
+			z-index: 70;
 			-webkit-transition: all .25s ease;
 			   -moz-transition: all .25s ease;
 			    -ms-transition: all .25s ease;
@@ -969,7 +1340,7 @@ a.plus{
 				height: 15em;
 				padding: 1.5em .5em 1em;
 				background: #FFF;
-				z-index: 102;
+				z-index: 70;
 				border-radius: .5em;
 				display: none;
 				}
@@ -1202,7 +1573,7 @@ a.plus{
 /*  inferior a 1130px  */
 @media only screen and (max-width: 1130px) {
    .logo-topo{
-		left: -3.6em;
+		left: -6.6em;
 	}
 }
 
@@ -1212,12 +1583,11 @@ a.plus{
    body{
 		font-size:14px;
    }
-
-   .menu-topo nav{
-
-		}
 	   	.menu-topo li a{
 	   		height: 5.5em;
+	   	}
+	   	.menu-interno li a{
+	   		height: 4.375em;
 	   	}
 
 	.l4{

@@ -3,9 +3,6 @@
 function showbook_theme_scripts() {
 	// Add css.
 	wp_enqueue_style( 'basic-sh', get_template_directory_uri() . '/css/basic.css', array(), '1.0' );
-	wp_enqueue_style( 'nicemodal-sh', get_template_directory_uri() . '/css/jquery-nicemodal.css', array(), '1.0' );
-	wp_enqueue_style( 'modal-sh', get_template_directory_uri() . '/css/jquery.modal.css', array(), '1.0' );
-	wp_enqueue_style( 'venobox-sh', get_template_directory_uri() . '/css/venobox.css', array(), '1.0' );
     wp_enqueue_style( 'custom-sh', get_template_directory_uri() . '/css/custom.css', array(), '1.0' );
 
 	if (! is_page('home') ){
@@ -18,9 +15,6 @@ function showbook_theme_scripts() {
 
 	wp_enqueue_script('jcycle', get_template_directory_uri() . '/js/jcycle.js', array('jquery'), '1.0');
 	wp_enqueue_script('scrollbox', get_template_directory_uri() . '/js/jquery.scrollbox.js', array('jquery'), '1.0');
-	wp_enqueue_script('nicemodal', get_template_directory_uri() . '/js/jquery-nicemodal.js', array('jquery'), '1.0');
-	wp_enqueue_script('modal', get_template_directory_uri() . '/js/jquery.modal.js', array('jquery'), '1.0');
-	wp_enqueue_script('venobox', get_template_directory_uri() . '/js/venobox.js', array('jquery'), '1.0');
 	wp_enqueue_script('main-script', get_template_directory_uri() . '/js/main.js', array('jquery'), '1.0');
 }
 add_action( 'wp_enqueue_scripts', 'showbook_theme_scripts' );
@@ -150,6 +144,55 @@ if(function_exists("register_field_group"))
 	));
 }
 
+function showbook_filter_control_artista( $control ) {
+	return is_page('artistas');
+}
 
+function showbook_filter_control_casas( $control ) {
+	return is_page('casas');
+}
+
+function mytheme_customize_register( $wp_customize )
+{
+    $wp_customize->add_section('showbook_theme_banner_header', array(
+        'title'    => __('Banner Inicial', 'showbook_theme'),
+        'description' => '',
+        'priority' => 120,
+    ));
+
+    //  =============================
+    //  = Image Upload              =
+    //  =============================
+    $wp_customize->add_setting('showbook_theme_image_banner_artistas', array(
+        'capability'        => 'edit_theme_options',
+        'type'           => 'option',
+
+    ));
+
+    $wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'image_banner_artistas', array(
+        'label'    => __('Banner principal Artistas', 'showbook'),
+        'section'  => 'showbook_theme_banner_header',
+        'settings' => 'showbook_theme_image_banner_artistas',
+		'active_callback' => 'showbook_filter_control_artista',
+    )));
+
+    //  =============================
+    //  = Image Upload              =
+    //  =============================
+    $wp_customize->add_setting('showbook_theme_image_banner_casas', array(
+        'capability'        => 'edit_theme_options',
+        'type'           => 'option',
+
+    ));
+
+    $wp_customize->add_control( new WP_Customize_Image_Control($wp_customize, 'image_banner_casas_noturnas', array(
+        'label'    => __('Banner principal Casas Noturnas', 'showbook'),
+        'section'  => 'showbook_theme_banner_header',
+        'settings' => 'showbook_theme_image_banner_casas',
+		'active_callback' => 'showbook_filter_control_casas',
+    )));
+
+}
+add_action( 'customize_register', 'mytheme_customize_register' );
 
  ?>

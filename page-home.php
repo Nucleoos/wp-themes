@@ -35,11 +35,11 @@ get_header(); ?>
 	<div class="alinha">
 		<header>
 			<h2>Artistas</h2>
-			<a href="#" class="exibir-todos">Exibir Todos</a>
+			<a href="/artistas" class="exibir-todos">Exibir Todos</a>
 		</header>
 		<a href="javascript:next_artista();" class="plus">+</a>
 		<span class="plus-sombra"></span>
-		<div class="artistas">
+		<div id="artistas-carossel" class="artistas">
 			<ul>
 				<?php $loop = new WP_Query( array( 'post_type' => 'artista', 'posts_per_page' => 30 ) ); ?>
 				<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
