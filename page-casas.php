@@ -18,15 +18,77 @@
 	</div>
 </div>
 
+<?php
+    if(isset($_GET['regiao'])){
+        $regiao = $_GET['regiao'];
+    }
+	if(isset($_GET['ordem'])){
+		$ordem = $_GET['ordem'];
+	}
+	if(isset($_GET['pesquisa'])){
+        $pesquisa = $_GET['pesquisa'];
+    }
+?>
+
+<div class="l3" style="background-color:white; padding-bottom:20px; height:auto;">
+	<div class="alinha">
+		<header class="regiao" style="margin-top:40px;">
+			<img style="margin:4px 0.938em;" src="<?php echo get_template_directory_uri(). '/img/btn-casas-drink.png' ?>" alt="">
+			<h2>Bares &amp; casas noturnas</h2>
+		</header>
+		<div class="filtro">
+			<div style="float:left;width:20%;text-align:right;padding-right:20px;">
+				<label>Selecione por</label>
+			</div>
+			<div style="float:left;width:75%;">
+				<form method="get" action="/casas">
+					<span class="orange">Região:</span>
+					<?php $alltags = get_terms('regiao');
+					if ($alltags){
+					  foreach( $alltags as $tag ) { ?>
+						<span>
+							<input name="regiao[]" type="checkbox" value="<?php echo $tag->slug ?>" />
+							<?php echo $tag->name; ?>
+						</span>
+					<?php } } ?>
+					</br>
+					<span class="orange">Ordem Alfabética:</span>
+					<?php if(isset($ordem) && $ordem === 'desc') { ?>
+						<span><input type="radio" value="asc" name="ordem" />Crescente</span>
+						<span><input type="radio" value="desc" checked name="ordem" />Decrescente</span>
+					<?php } else { ?>
+						<span><input type="radio" value="asc" checked name="ordem" />Crescente</span>
+						<span><input type="radio" value="desc" name="ordem" />Decrescente</span>
+					<?php } ?>
+					</br>
+					<span class="orange">Buscar:</span>
+					<?php if(isset($pesquisa)) { ?>
+						<input name="pesquisa" type="text" value="<?php echo $pesquisa ?>" />
+					<?php } else { ?>
+						<input name="pesquisa" type="text" />
+					<?php } ?>
+					<button type="submit">Buscar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 
 <?php
-$alltags = get_terms('regiao');
+$args_term = array();
+if(isset($regiao)){
+	$args_term = array(
+		'slug' => $regiao,
+	);
+}
+$alltags = get_terms('regiao', $args_term);
 if ($alltags){
   foreach( $alltags as $tag ) {
     $args=array(
       'post_type' => 'tribe_venue',
       'post_status' => 'publish',
       'showposts' => -1,
+	  'order' => isset($ordem) ? $order:'ASC',
 	  'tax_query' => array(
 	        array(
 	            'taxonomy' => 'regiao', //or tag or custom taxonomy
@@ -35,7 +97,15 @@ if ($alltags){
 	        )
 	   )
     );
+	if(isset($pesquisa)){
+		$args['s'] = $pesquisa;
+	}
+	$found = false;
+	$my_query = null;
+    $my_query = new WP_Query($args);
+    if( $my_query->have_posts() ) {
 	?>
+
 <div class="l3" style="background-color:white; padding-bottom:80px; height:auto;">
 	<div class="alinha">
 		<header class="regiao">
@@ -44,10 +114,7 @@ if ($alltags){
 		</header>
 		<?php
 			$contador = 0;
-			$my_query = null;
-		    $my_query = new WP_Query($args);
-		    if( $my_query->have_posts() ) {
-		         while ($my_query->have_posts()) : $my_query->the_post(); ?>
+		    while ($my_query->have_posts()) : $my_query->the_post(); $found=true; ?>
 		<?php if($contador == 0) { ?>
 		<div class="bares">
 			<ul> <?php } ?>
@@ -85,5 +152,12 @@ if ($alltags){
 wp_reset_query();  // Restore global post data stomped by the_post().
 ?>
 
+<?php if(!$found){ ?>
+	<div class="l3" style="background-color:white; padding-bottom:80px; height:200px;">
+		<div class="alinha">
+			<label>Nenhum registro encontrado</label>
+		</div>
+	</div>
+<?php } ?>
 
 <?php get_footer(); ?>

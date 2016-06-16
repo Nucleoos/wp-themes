@@ -83,7 +83,7 @@ function center_map( map ) {
         direction: 'h',
         distance: 235,
     });
-    $('#bares-carosel').scrollbox({
+    $('#bares-carossel').scrollbox({
         direction: 'h',
         distance: 235,
     });

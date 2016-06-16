@@ -23,7 +23,7 @@ header.regiao > img {
 }
 header.regiao > h2 {
     float:left;
-    color:#666;
+    color:#b0afb4;
     text-transform: uppercase;
     font-family: 'Ubuntu Condensed';
     font-size: 43px;
@@ -34,7 +34,7 @@ header.artistas > img {
 }
 header.artistas > h2 {
     float:left;
-    color:#666;
+    color:#b0afb4;
     text-transform: uppercase;
     font-family: 'Ubuntu Condensed';
     font-size: 43px;
@@ -47,7 +47,7 @@ header.local > img {
 }
 header.local > h2 {
     float:left;
-    color:#666;
+    color:#b0afb4;
     text-transform: uppercase;
     font-family: 'Ubuntu Condensed';
     font-size: 43px;
@@ -136,3 +136,29 @@ header.local > h4 {
 					height: auto;
 					min-height: 25.625em;
 				}
+
+.filtro {
+    text-transform: uppercase;
+    font-family: 'Roboto';
+    font-size: 20px;
+    color: #b0afb4;
+    line-height: 30px;
+}
+.filtro span {
+    padding: 4px 10px;
+}
+.filtro button{
+    background-image: url('../img/btn-search.png');
+    background-repeat: no-repeat;
+    background-color: #fff;
+    text-indent: -400px;
+    overflow: hidden;
+    border: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-position-y: 4px;
+}
+.orange {
+    color: #E06919;
+}
