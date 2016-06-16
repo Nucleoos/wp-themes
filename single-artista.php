@@ -60,14 +60,14 @@
 						<li><a href="#"><img src="<?php echo get_template_directory_uri(). '/img/artistas/tmp/video-tmp.jpg' ?>" alt=""></a></li>
 						<li><a href="#"><img src="<?php echo get_template_directory_uri(). '/img/artistas/tmp/video-tmp.jpg' ?>" alt=""></a></li>
 						<li><a href="#"><img src="<?php echo get_template_directory_uri(). '/img/artistas/tmp/video-tmp.jpg' ?>" alt=""></a></li>
-						<li><a href="#" title="Mais V&iacute;deos"><img src="<?php echo get_template_directory_uri(). '/img/mais-videos.png' ?>" alt=""></a></li>
+						<li><a target="_blank" href="<?php echo get_field('url_album_facebook'); ?>" title="Mais V&iacute;deos"><img src="<?php echo get_template_directory_uri(). '/img/mais-videos.png' ?>" alt=""></a></li>
 					</ul>
 				</div>
 				<div class="artista-botoes">
-					<a href="#" class="btn01">Oficial</a>
+					<a target="_blank" href="<?php echo get_field('url_facebook'); ?>" class="btn01">Oficial</a>
 					<div class="btn02">
-						<a href="#">Release</a>
-						<a href="#">Rider T&eacute;cnico</a>
+						<a target="_blank" href="<?php echo get_field('release_tecnico'); ?>">Release</a>
+						<a target="_blank" href="<?php echo wp_get_attachment_url( get_field('rider_tecnico') ); ?>">Rider T&eacute;cnico</a>
 					</div>
 					<div class="btn03">
 						<?php $old = $post; $data_evento=null; ?>

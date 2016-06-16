@@ -832,7 +832,7 @@ html,body{
 							text-transform: uppercase;
 							overflow: hidden;
 						}
-						.bar-shows a{
+						.bar-shows a.maps{
 							float: right;
 							width: 2.813em;
 							height: 2.813em;

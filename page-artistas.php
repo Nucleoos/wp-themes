@@ -26,9 +26,10 @@ if ($alltags){
     if( $my_query->have_posts() ) {
       while ($my_query->have_posts()) : $my_query->the_post(); ?>
 
-<div class="l2">
+<div class="l3" style="background-color:white; padding-bottom:80px;">
 	<div class="alinha">
-		<header>
+		<header class="artistas">
+			<img src="<?php echo get_template_directory_uri(). '/img/regiao-img.png' ?>" alt="">
 			<h2><?php echo $tag->name ?></h2>
 		</header>
 		<div class="artistas">

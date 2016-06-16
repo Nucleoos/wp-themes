@@ -46,6 +46,7 @@ get_header(); ?>
 					<?php $old = $post; $data_evento=null; ?>
 					<li>
 						<div class="artista-img">
+							<?php the_post_thumbnail(); ?>
 							<?php
 							$events = get_posts(array(
 								'post_type' => 'tribe_events',
@@ -59,14 +60,13 @@ get_header(); ?>
 							));
 							foreach( $events as $event ):
 								$data_evento = get_field('_EventStartDate', $event->ID);
-								echo get_the_post_thumbnail($event->ID );
 							endforeach; ?>
 							<?php
 								$post = $old;  // reset the post from the main loop
                                 $id = $old->ID; ?>
 						</div>
 						<div class="artista-logo">
-							<?php the_post_thumbnail(); ?>
+							<?php echo wp_get_attachment_image(get_field('banner_miniatura'), 'events-thumbnail'); ?>
 						</div>
 						<div class="artista-data">
 							<?php if(!is_null($data_evento)) { ?>
@@ -87,14 +87,15 @@ get_header(); ?>
 	<div class="alinha">
 	<header>
 		<h3>Bares e casas noturnas</h3>
-		<a href="#" class="exibir-todos">Exibir Todos</a>
+		<a href="/casas" class="exibir-todos">Exibir Todos</a>
 	</header>
 		<a href="javascript:next_bar();" class="plus">+</a>
 		<span class="plus-sombra"></span>
-		<div class="bares">
+		<div id="bares-carossel" class="bares">
 			<ul>
 				<?php $loop = new WP_Query( array( 'post_type' => 'tribe_venue', 'posts_per_page' => 30 ) ); ?>
 				<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+
 				<li>
 					<div class="bar-logo">
 						<?php the_post_thumbnail(); ?>
@@ -103,8 +104,10 @@ get_header(); ?>
 						<?php echo wp_get_attachment_image(get_field('secondary_image'), 'events-thumbnail'); ?>
 					</div>
 					<div class="bar-shows">
-						<span>pr&oacute;ximos shows</span>
-						<a href="#"></a>
+						<a href="/local?slug=<?php echo basename(get_permalink()); ?>">
+							<span>pr&oacute;ximos shows</span>
+						</a>
+						<a class="tooltip maps" title="<?php echo get_field('_VenueCity').' - '.get_field('_VenueState') ; ?>" href="#"></a>
 					</div>
 				</li>
 				<?php endwhile; wp_reset_query();  ?>

@@ -4,6 +4,8 @@ function showbook_theme_scripts() {
 	// Add css.
 	wp_enqueue_style( 'basic-sh', get_template_directory_uri() . '/css/basic.css', array(), '1.0' );
     wp_enqueue_style( 'custom-sh', get_template_directory_uri() . '/css/custom.css', array(), '1.0' );
+	wp_enqueue_style( 'tooltip-showbook', get_template_directory_uri() . '/css/tooltipster.bundle.css', array(), '1.0' );
+	wp_enqueue_style( 'tooltip-borderless-showbook', get_template_directory_uri() . '/css/tooltipster-sideTip-borderless.min.css', array(), '1.0' );
 
 	if (! is_page('home') ){
 		wp_enqueue_style( 'pages-sh', get_template_directory_uri() . '/css/pages.css', array(), '1.0' );
@@ -15,6 +17,8 @@ function showbook_theme_scripts() {
 
 	wp_enqueue_script('jcycle', get_template_directory_uri() . '/js/jcycle.js', array('jquery'), '1.0');
 	wp_enqueue_script('scrollbox', get_template_directory_uri() . '/js/jquery.scrollbox.js', array('jquery'), '1.0');
+	wp_enqueue_script('tooltip-showbook-script', get_template_directory_uri() . '/js/tooltipster.bundle.js', array('jquery'), '1.0');
+	wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false', array(), '1.0');
 	wp_enqueue_script('main-script', get_template_directory_uri() . '/js/main.js', array('jquery'), '1.0');
 }
 add_action( 'wp_enqueue_scripts', 'showbook_theme_scripts' );
@@ -28,6 +32,58 @@ add_action( 'init', 'showbook_add_thumbnail_support' );
 add_theme_support( 'post-thumbnails', array ('tribe_events', 'tribe_venue', 'artista') );
 set_post_thumbnail_size( 210, 190, true );
 add_image_size( 'events-thumbnail', 219, 210, true );
+
+
+function modify_tribe_venues(  $post_type, $args ) {
+    if ( $post_type == 'tribe_venue' ) {
+
+        global $wp_post_types;
+        $args->public = true;
+		$args->publicly_queryable = true;
+		$args->show_ui = true;
+		$args->exclude_from_search = false;
+		$args->show_in_nav_menus = true;
+
+        $wp_post_types[ $post_type ] = $args;
+    }
+}
+add_action( 'registered_post_type', 'modify_tribe_venues', 10, 2);
+
+function showbook_add_query_vars_filter( $vars ){
+  $vars[] = "slug";
+  return $vars;
+}
+add_filter( 'query_vars', 'showbook_add_query_vars_filter' );
+
+function add_custom_taxonomies_artistas_bares() {
+  // Add new "Locations" taxonomy to Posts
+  register_taxonomy('regiao', 'tribe_venue', array(
+    // Hierarchical taxonomy (like categories)
+    'hierarchical' => true,
+    // This array of options controls the labels displayed in the WordPress Admin UI
+    'labels' => array(
+      'name' => _x( 'Região', 'taxonomy general name' ),
+      'singular_name' => _x( 'Região', 'taxonomy singular name' ),
+      'search_items' =>  __( 'Pesquisar Regiões' ),
+      'all_items' => __( 'Todas as Regiões' ),
+      'parent_item' => __( 'Região Pai' ),
+      'parent_item_colon' => __( 'Região Pai:' ),
+      'edit_item' => __( 'Editar Região' ),
+      'update_item' => __( 'Atualizar Região' ),
+      'add_new_item' => __( 'Adicionar nova Região' ),
+      'new_item_name' => __( 'Novo nome de região' ),
+      'menu_name' => __( 'Regiões' ),
+    ),
+    // Control the slugs used for this taxonomy
+    'rewrite' => array(
+      'slug' => 'regiao', // This controls the base slug that will display before each term
+      'with_front' => false, // Don't display the category base before "/locations/"
+      'hierarchical' => true // This will allow URL's like "/locations/boston/cambridge/"
+    ),
+  ));
+}
+add_action( 'init', 'add_custom_taxonomies_artistas_bares', 0 );
+
 
 add_action( 'init', 'cptui_register_my_cpts_artista' );
 function cptui_register_my_cpts_artista() {
@@ -54,7 +110,7 @@ function cptui_register_my_cpts_artista() {
 		"query_var" => true,
 		"menu_icon" => "dashicons-money",
 		"supports" => array( "title", "editor", "thumbnail", "custom-fields", "comments" ),
-		"taxonomies" => array( "post_tag" ),
+		"taxonomies" => array( "category" ),
 	);
 	register_post_type( "artista", $args );
 
