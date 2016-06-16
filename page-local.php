@@ -13,10 +13,18 @@
       while ($my_query->have_posts()) : $my_query->the_post(); ?>
 
 	<div class="l1">
-		<div class="artista-banner">
+		<div class="banner-secundario">
 			<ul>
 				<li>
-					<?php echo wp_get_attachment_image(get_field('banner_principal'), 'full'); ?>
+					<div class="foto-banda">
+						<?php echo wp_get_attachment_image(get_field('banner_principal'), 'full'); ?>
+					</div>
+					<div class="tarja-laranja"></div>
+					<div class="alinha">
+						<div class="logo-banda">
+							<?php the_post_thumbnail(); ?>							
+						</div>
+					</div>
 				</li>
 			</ul>
 		</div>

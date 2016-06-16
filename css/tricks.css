@@ -90,3 +90,49 @@ header.local > h4 {
     padding: 10px;
     text-align:right;
 }
+
+.banner-secundario{
+	height: 27.5em;
+	position: relative;
+	}
+	.banner-secundario ul{
+		height: 27.5em;
+		}
+		.banner-secundario li{
+			height: 27.5em !important;
+			position:relative;
+			}
+			/*  Onde a magia acontece  */
+			.banner-secundario .tarja-laranja{
+				position: absolute;
+				left: 0em;
+				bottom: 0em;
+				width: 100%;
+				height: 1.875em;
+				background: #D78B13;
+			}
+			.banner-secundario .logo-banda{
+				position: absolute;
+				left: .5em;
+				top: -10.50em;
+				width: 10em;
+				height: 10em;
+				padding: 0.625em;
+				background: rgba(255,255,255,.85);
+				border-radius: .5em;
+				z-index:1;
+				}
+				.banner-secundario .logo-banda img{
+					width: 100%;
+					height: 100%;
+				}
+			.banner-secundario .foto-banda{
+				height: 25.625em !important;
+				overflow: hidden;
+				}
+				.banner-secundario .foto-banda img{
+					float: left;
+					width: 100%;
+					height: auto;
+					min-height: 25.625em;
+				}

@@ -1,11 +1,18 @@
 <?php get_header(); ?>
 
-
 <div class="l1">
-	<div class="artista-banner">
+	<div class="banner-secundario">
 		<ul>
 			<li>
-				<img src="<?php echo get_option('showbook_theme_image_banner_casas') ?>" />
+				<div class="foto-banda">
+					<img src="<?php echo get_option('showbook_theme_image_banner_casas') ?>" />
+				</div>
+				<div class="tarja-laranja"></div>
+				<div class="alinha">
+					<div class="logo-banda">
+						<?php the_post_thumbnail(); ?>
+					</div>
+				</div>
 			</li>
 		</ul>
 	</div>
@@ -55,7 +62,7 @@ if ($alltags){
 						<a href="/local?slug=<?php echo basename(get_permalink()); ?>">
 							<span>pr&oacute;ximos shows</span>
 						</a>
-						<a href="#"></a>
+						<a class="tooltip maps" title="<?php echo get_field('_VenueCity').' - '.get_field('_VenueState') ; ?>" href="#"></a>
 					</div>
 					<label><?php echo $contador; ?></label>
 				</li>

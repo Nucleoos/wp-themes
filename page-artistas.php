@@ -2,29 +2,34 @@
 
 
 <div class="l1">
-	<div class="artista-banner">
+	<div class="banner-secundario">
 		<ul>
 			<li>
-				<img src="<?php echo get_option('showbook_theme_image_banner_artistas') ?>" />
+				<div class="foto-banda">
+					<img src="<?php echo get_option('showbook_theme_image_banner_artistas') ?>" />
+				</div>
+				<div class="tarja-laranja"></div>
+				<div class="alinha">
+					<div class="logo-banda">
+						<?php the_post_thumbnail(); ?>
+					</div>
+				</div>
 			</li>
 		</ul>
 	</div>
 </div>
 
+
 <?php
-$alltags = get_terms('post_tag');
+$alltags = get_terms('category');
 if ($alltags){
   foreach( $alltags as $tag ) {
     $args=array(
-      'tag__in' => array($tag->term_id),
+      'cat' => $tag->term_id,
       'post_type' => 'artista',
       'post_status' => 'publish',
       'showposts' => -1,
-    );
-    $my_query = null;
-    $my_query = new WP_Query($args);
-    if( $my_query->have_posts() ) {
-      while ($my_query->have_posts()) : $my_query->the_post(); ?>
+    ); ?>
 
 <div class="l3" style="background-color:white; padding-bottom:80px;">
 	<div class="alinha">
@@ -34,8 +39,11 @@ if ($alltags){
 		</header>
 		<div class="artistas">
 			<ul>
-				<?php $loop = new WP_Query( array( 'post_type' => 'artista', 'posts_per_page' => 30 ) ); ?>
-				<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+			<?php
+				$my_query = null;
+			    $my_query = new WP_Query($args);
+			    if( $my_query->have_posts() ) {
+			      while ($my_query->have_posts()) : $my_query->the_post(); ?>
 					<?php $old = $post; $data_evento=null; ?>
 					<li>
 						<div class="artista-img">
@@ -71,18 +79,18 @@ if ($alltags){
 						</div>
 						<a href="<?php the_permalink(); ?>" class="artista-contrate">Contrate</a>
 					</li>
-				<?php endwhile; wp_reset_query();  ?>
+					<?php
+			       endwhile;
+			     } ?>
 			</ul>
 		</div>
 	</div>
 </div>
-
-       <?php
-      endwhile;
-    }
-  }
+<?php
+	}
 }
 wp_reset_query();  // Restore global post data stomped by the_post().
-?>
+?> ?>
+
 
 <?php get_footer(); ?>

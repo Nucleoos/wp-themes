@@ -120,63 +120,39 @@ function cptui_register_my_cpts_artista() {
 if(function_exists("register_field_group"))
 {
 	register_field_group(array (
-		'id' => 'acf_artistas',
-		'title' => 'Artistas',
+		'id' => 'acf_campos-local',
+		'title' => 'Campos Local',
 		'fields' => array (
 			array (
-				'key' => 'field_57243441ca408',
-				'label' => 'Artistas do Evento',
-				'name' => 'artistas',
-				'type' => 'relationship',
-				'return_format' => 'object',
-				'post_type' => array (
-					0 => 'artista',
-				),
-				'taxonomy' => array (
-					0 => 'all',
-				),
-				'filters' => array (
-					0 => 'search',
-				),
-				'result_elements' => array (
-					0 => 'featured_image',
-					1 => 'post_type',
-					2 => 'post_title',
-				),
-				'max' => '',
+				'key' => 'field_5761ef2ac777c',
+				'label' => 'Url Facebook',
+				'name' => 'url_facebook',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => 'Cole aqui o link da página do facebook',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'html',
+				'maxlength' => '',
 			),
-		),
-		'location' => array (
 			array (
-				array (
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'tribe_events',
-					'order_no' => 0,
-					'group_no' => 0,
-				),
-			),
-		),
-		'options' => array (
-			'position' => 'normal',
-			'layout' => 'no_box',
-			'hide_on_screen' => array (
-			),
-		),
-		'menu_order' => 0,
-	));
-	register_field_group(array (
-		'id' => 'acf_images-venue',
-		'title' => 'Images Venue',
-		'fields' => array (
-			array (
-				'key' => 'field_5724d407c7015',
-				'label' => 'Secondary Image',
-				'name' => 'secondary_image',
+				'key' => 'field_5761da943a37e',
+				'label' => 'Banner Principal',
+				'name' => 'banner_principal',
 				'type' => 'image',
 				'save_format' => 'id',
-				'preview_size' => 'events-thumbnail',
+				'preview_size' => 'full',
 				'library' => 'all',
+			),
+			array (
+				'key' => 'field_5761e11822ccf',
+				'label' => 'Local Evento',
+				'name' => 'local_evento',
+				'type' => 'google_map',
+				'center_lat' => '',
+				'center_lng' => '',
+				'zoom' => '',
+				'height' => '',
 			),
 		),
 		'location' => array (
@@ -198,7 +174,102 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 0,
 	));
+	register_field_group(array (
+		'id' => 'acf_novas-imagens-artista',
+		'title' => 'Novas imagens artista',
+		'fields' => array (
+			array (
+				'key' => 'field_572b2d07053eb',
+				'label' => 'Banner Principal',
+				'name' => 'banner_principal',
+				'type' => 'image',
+				'save_format' => 'id',
+				'preview_size' => 'medium',
+				'library' => 'all',
+			),
+			array (
+				'key' => 'field_57322973b15df',
+				'label' => 'Rider Tecnico',
+				'name' => 'rider_tecnico',
+				'type' => 'file',
+				'save_format' => 'id',
+				'library' => 'all',
+			),
+			array (
+				'key' => 'field_5732299f63bed',
+				'label' => 'Release Tecnico',
+				'name' => 'release_tecnico',
+				'type' => 'file',
+				'save_format' => 'url',
+				'library' => 'all',
+			),
+			array (
+				'key' => 'field_575974a84aaad',
+				'label' => 'Url Album Facebook',
+				'name' => 'url_album_facebook',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => 'Copie e cole aqui a url do album que você quer mostrar (album público)',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'html',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_5761b076b2c4c',
+				'label' => 'Url Playlist Youtube',
+				'name' => 'url_playlist_youtube',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => 'Copie e cole aqui a url da playlist que você quer mostrar (playlist pública)',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'html',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_5761bbd693bc9',
+				'label' => 'Url Facebook',
+				'name' => 'url_facebook',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'html',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_5761bcb03e6fb',
+				'label' => 'Banner Miniatura',
+				'name' => 'banner_miniatura',
+				'type' => 'image',
+				'save_format' => 'id',
+				'preview_size' => 'events-thumbnail',
+				'library' => 'all',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'artista',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
 }
+
 
 function showbook_filter_control_artista( $control ) {
 	return is_page('artistas');
