@@ -79,7 +79,7 @@ function center_map( map ) {
                 });
         })
     });
-    $('#artistas-carossel').scrollbox({
+    $('#artistas-carosel').scrollbox({
         direction: 'h',
         distance: 235,
     });

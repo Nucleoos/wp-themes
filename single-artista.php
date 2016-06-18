@@ -84,16 +84,19 @@
 						));
 						foreach( $events as $event ):
 							$data_evento = get_field('_EventStartDate', $event->ID);
+							$id_evento = $event->ID;
 						endforeach; ?>
 						<?php
 							$post = $old;  // reset the post from the main loop
 							$id = $old->ID;
 							if(!is_null($data_evento)) { ?>
-								<span> <?php echo date_i18n('d.F /H\H', strtotime($data_evento )) ?> </span>
+								<a href="<?php echo get_the_permalink($id_evento); ?>">
+									<span> <?php echo date_i18n('d.F /H\H', strtotime($data_evento )) ?> </span>
+								</a>
 							<?php } else { ?>
 								<span>SEM SHOW</span>
 							<?php } ?>
-						<a href="#">Local</a>
+						<a class="map" href="#">Local</a>
 					</div>
 				</div>
 			</div>

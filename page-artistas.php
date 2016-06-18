@@ -50,7 +50,11 @@
 					if ($alltags){
 					  foreach( $alltags as $tag ) { ?>
 						<span>
-							<input name="regiao[]" type="checkbox" value="<?php echo $tag->slug ?>" />
+							<?php if(isset($regiao) && in_array($tag->slug, $regiao)) { ?>
+								<input name="regiao[]" type="checkbox" checked value="<?php echo $tag->slug ?>" />
+							<?php } else { ?>
+								<input name="regiao[]" type="checkbox" value="<?php echo $tag->slug ?>" />
+							<?php } ?>
 							<?php echo $tag->name; ?>
 						</span>
 					<?php } } ?>
@@ -82,6 +86,7 @@ $args_term = array();
 if(isset($regiao)){
 	$args_term = array(
 		'slug' => $regiao,
+		'order' => isset($ordem) ? $ordem:'ASC',
 	);
 }
 $alltags = get_terms('category', $args_term);
@@ -92,7 +97,7 @@ if ($alltags){
       'post_type' => 'artista',
       'post_status' => 'publish',
       'showposts' => -1,
-	  'order' => isset($ordem) ? $order:'ASC',
+	  'order' => isset($ordem) ? $ordem:'ASC',
     );
 	if(isset($pesquisa)){
 		$args['s'] = $pesquisa;

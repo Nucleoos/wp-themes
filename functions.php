@@ -287,6 +287,12 @@ function mytheme_customize_register( $wp_customize )
         'priority' => 120,
     ));
 
+    $wp_customize->add_section('showbook_theme_footer_contact', array(
+        'title'    => __('Formulário Contato', 'showbook_theme'),
+        'description' => '',
+        'priority' => 120,
+    ));
+
     //  =============================
     //  = Image Upload              =
     //  =============================
@@ -318,6 +324,22 @@ function mytheme_customize_register( $wp_customize )
         'settings' => 'showbook_theme_image_banner_casas',
 		'active_callback' => 'showbook_filter_control_casas',
     )));
+
+    //  =============================
+    //  = Shortcode Formulário de contato              =
+    //  =============================
+    $wp_customize->add_setting('showbook_theme_contact_form_shortcode', array(
+        'capability'        => 'edit_theme_options',
+        'type'           => 'option',
+
+    ));
+
+    $wp_customize->add_control('formulario_contato_footer', array(
+        'label'    => __('Formulário de contato Rodapé', 'showbook'),
+        'section'  => 'showbook_theme_footer_contact',
+        'settings' => 'showbook_theme_contact_form_shortcode',
+		'type' => 'text',
+    ));
 
 }
 add_action( 'customize_register', 'mytheme_customize_register' );

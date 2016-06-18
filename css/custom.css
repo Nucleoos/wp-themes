@@ -118,12 +118,12 @@ html,body{
 	.menu-interno nav{
 		width: 42em;
 	}
-	.menu-interno .logo-topo{
+	/* .menu-interno .logo-topo{
 		left: -3em;
 		top: -3em;
 		width: 20em;
 		height: 13em;
-	}
+	} */
 	.menu-interno nav,
 	.menu-interno li a{
 		height: 4.375em;
@@ -474,7 +474,7 @@ html,body{
 						text-transform: uppercase;
 						overflow: hidden;
 					}
-					.artista-data a{
+					.artista-data a.map{
 						float: right;
 						width: 2.813em;
 						height: 2.813em;
@@ -483,7 +483,7 @@ html,body{
 						background: #915656 url('../img/bg-artista-local.png') 0em 0em no-repeat;
 						background-size: auto 100%;
 						}
-						.artista-data a:hover{
+						.artista-data a.map:hover{
 							box-shadow: 0em 0em .5em  #915656;
 						}
 				.artista-contrate{
@@ -689,7 +689,7 @@ html,body{
 					font-family: 'Ubuntu Condensed',sans-serif;
 					font-size: 1em;
 				}
-				.artista-botoes div.btn03 a{
+				.artista-botoes div.btn03 a.map{
 					float: right;
 					width: 2.813em;
 					height: 2.813em;
@@ -698,7 +698,7 @@ html,body{
 					background: url('../img/bg-artista-local.png') 0em 0em no-repeat;
 					background-size: auto 100%;
 					}
-					.artista-botoes div.btn03 a:hover{
+					.artista-botoes div.btn03 a.map:hover{
 						box-shadow: 0em 0em .25em #A55556;
 					}
 

@@ -9,31 +9,8 @@
 					</header>
 
 					<div class="form-contato">
-						<form action="">
-							<div class="campo02">
-								<label>Mensagem:</label>
-								<textarea name="Mensagem"></textarea>
-							</div>
-							<div class="campo01">
-								<label>Nome:</label>
-								<input type="text" name="nome">
-							</div>
-							<div class="campo01">
-								<label>E-mail:</label>
-								<input type="text" name="email">
-							</div>
-							<div class="campo01">
-								<label>Telefone:</label>
-								<input type="text" name="telefone" class="fone">
-							</div>
-							<div class="campo01">
-								<label>Assunto:</label>
-								<input type="text" name="assunto">
-							</div>
-							<div class="campo03">
-								<input type="submit" type="submit" name="submit" value="ENVIAR" class="btn-enviar">
-							</div>
-						</form>
+						<?php $formulario = get_option('showbook_theme_contact_form_shortcode'); ?>
+						<?php echo do_shortcode($formulario); ?>
 					</div>
 					<footer>
 						<div class="fone">

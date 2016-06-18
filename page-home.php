@@ -60,6 +60,7 @@ get_header(); ?>
 							));
 							foreach( $events as $event ):
 								$data_evento = get_field('_EventStartDate', $event->ID);
+								$id_evento = $event->ID;
 							endforeach; ?>
 							<?php
 								$post = $old;  // reset the post from the main loop
@@ -70,11 +71,13 @@ get_header(); ?>
 						</div>
 						<div class="artista-data">
 							<?php if(!is_null($data_evento)) { ?>
-								<span> <?php echo date_i18n('d.F /H\H', strtotime($data_evento )) ?> </span>
+								<a href="<?php echo get_the_permalink($id_evento); ?>">
+									<span> <?php echo date_i18n('d.F /H\H', strtotime($data_evento )) ?> </span>
+								</a>
 							<?php } else { ?>
 								<span>Sem show</span>
 							<?php } ?>
-							<a href="#">Local</a>
+							<a class="map" href="#">Local</a>
 						</div>
 						<a href="<?php the_permalink(); ?>" class="artista-contrate">Contrate</a>
 					</li>

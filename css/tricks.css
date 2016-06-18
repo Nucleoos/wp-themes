@@ -14,9 +14,9 @@ a.plus {
     right: 8.5em;
     height: 27.75em;
 }
-header {
+/* header {
     min-height: 4.375em;
-}
+} */
 header.regiao > img {
     float:left;
     margin:10px 0.938em;
@@ -161,4 +161,25 @@ header.local > h4 {
 }
 .orange {
     color: #E06919;
+}
+
+/* Contact form tricks */
+div.wpcf7-mail-sent-ng {
+    border:none;
+    float: left;
+    width: 45.625em;
+    color: red;
+    background-color: blanchedalmond;
+    padding: 21px;
+}
+div.wpcf7-validation-errors {
+    border:none;
+    float: left;
+    width: 45.625em;
+    color: #E06919;
+    background-color: blanchedalmond;
+    padding: 21px;
+}
+span.wpcf7-not-valid-tip {
+    display: inline;
 }
