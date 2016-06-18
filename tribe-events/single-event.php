@@ -55,7 +55,43 @@ $event_id = get_the_ID();
 				<h1><?php the_title(); ?></h1>
 				<h2>Vila Seu Justino | São Paulo, SP</h2>
 				<div class="mapa">
-					oi
+					<?php
+					$venue_id = get_field('_EventVenueID');
+					$location = tribe_get_coordinates(get_the_ID());
+						if( ! empty($location) ): ?>
+							<div id="map" style="width: 100%; height: 74px;"></div>
+							<script src='http://maps.googleapis.com/maps/api/js?sensor=false' type='text/javascript'></script>
+
+							<script type="text/javascript">
+							  //<![CDATA[
+								var marker;
+								function load() {
+								var lat = <?php echo $location['lat']; ?>;
+								var lng = <?php echo $location['lng']; ?>;
+							// coordinates to latLng
+								var latlng = new google.maps.LatLng(lat, lng);
+							// map Options
+								var myOptions = {
+								zoom: 14,
+								center: latlng,
+								mapTypeId: google.maps.MapTypeId.ROADMAP
+							   };
+							//draw a map
+								var map = new google.maps.Map(document.getElementById("map"), myOptions);
+								marker = new google.maps.Marker({
+								position: map.getCenter(),
+								map: map
+							   });
+							}
+							// call the function
+							   load();
+								//google.maps.event.addListener(marker, 'click', function() {
+								//	alert(marker.map);
+							//		window.open(marker.url);
+						//			});
+							//]]>
+							</script>
+						<?php  endif; ?>
 				</div>
 				<div class="botoes">
 					<a target="_blank" href="" class="facebook">Oficial</a>
