@@ -149,7 +149,7 @@ if ($alltags){
 							<?php } else { ?>
 								<span>Sem show</span>
 							<?php } ?>
-							<a href="#">Local</a>
+							<a class="map" href="#">Local</a>
 						</div>
 						<a href="<?php the_permalink(); ?>" class="artista-contrate">Contrate</a>
 					</li>

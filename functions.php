@@ -341,6 +341,23 @@ function mytheme_customize_register( $wp_customize )
 		'type' => 'text',
     ));
 
+
+	//  =============================
+	//  = Shortcode Formulário Faça Parte
+	//  =============================
+	$wp_customize->add_setting('showbook_theme_faca_parte_form_shortcode', array(
+		'capability'        => 'edit_theme_options',
+		'type'           => 'option',
+
+	));
+
+	$wp_customize->add_control('formulario_faca_parte', array(
+		'label'    => __('Formulário Faça Parte', 'showbook'),
+		'section'  => 'showbook_theme_footer_contact',
+		'settings' => 'showbook_theme_faca_parte_form_shortcode',
+		'type' => 'text',
+	));
+
 }
 add_action( 'customize_register', 'mytheme_customize_register' );
 

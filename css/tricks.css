@@ -167,7 +167,6 @@ header.local > h4 {
 div.wpcf7-mail-sent-ng {
     border:none;
     float: left;
-    width: 45.625em;
     color: red;
     background-color: blanchedalmond;
     padding: 21px;
@@ -175,11 +174,107 @@ div.wpcf7-mail-sent-ng {
 div.wpcf7-validation-errors {
     border:none;
     float: left;
-    width: 45.625em;
     color: #E06919;
     background-color: blanchedalmond;
     padding: 21px;
 }
 span.wpcf7-not-valid-tip {
     display: inline;
+}
+
+div.evento .imagem-evento img {
+    max-width: 960px;
+    max-height: 300px;
+}
+div.evento .header-evento .data {
+    float: left;
+    width: 170px;
+    height: 180px;
+    background-color: #f68c2c;
+    color:white;
+    border-radius: 6px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+div.evento .header-evento .data img {
+    float:left;
+    margin-left: 45px;
+    margin-top: 6px;
+}
+div.evento .header-evento .data .hora {
+    font-size: 30px;
+    font-family: 'Ubuntu Condensed';
+    font-weight: 900;
+    float:left;
+    margin-top: 15px;
+}
+div.evento .header-evento .data .dia {
+    font-size: 70px;
+    font-family: 'Ubuntu Condensed',sans-serif;
+    font-weight: 900;
+    float:left;
+    margin-top: -10px;
+    margin-left: 50px;
+}
+div.evento .header-evento .data .semana {
+    font-size: 25px;
+    font-family: 'Ubuntu Condensed',sans-serif;
+    font-weight: 900;
+    float:left;
+    margin-top: -10px;
+    margin-left: 25px;
+}
+div.evento .header-evento .detalhes {
+    width: 100%;
+}
+div.evento .header-evento .detalhes h1 {
+    color: #b0afb4;
+    text-transform: uppercase;
+    font-family: 'Ubuntu Condensed';
+    font-size: 30px;
+}
+div.evento .header-evento .detalhes h2 {
+    color: #f68c2c;
+    font-weight: 400;
+}
+div.evento .header-evento .detalhes .mapa {
+    background-color: blue;
+    float:left;
+    width:780px;
+    height:74px;
+}
+div.evento .header-evento .detalhes .botoes{
+    margin-top: 6px;
+    float:left;
+    width:780px;
+}
+div.evento .header-evento .detalhes .botoes a.participe{
+    background-position: center;
+    background-color: #f68c2c;
+    background-image: url('../img/btn-participar.png');
+    background-repeat: no-repeat;
+    display: block;
+    width: 160px;
+    height: 45px;
+    overflow: hidden;
+    text-indent: -100px;
+    float:left;
+    margin-left: 10px;
+}
+div.evento .header-evento .detalhes .botoes a.facebook{
+    background-position: center;
+    background-color: #215e99;
+    background-image: url('../img/btn-oficial.png');
+    background-repeat: no-repeat;
+    display: block;
+    width: 115px;
+    height: 45px;
+    overflow: hidden;
+    text-indent: -100px;
+    float:left;
+}
+div.evento .conteudo-evento {
+    margin-left: 180px;
+    margin-top: 20px;
+    margin-bottom: 80px;
 }

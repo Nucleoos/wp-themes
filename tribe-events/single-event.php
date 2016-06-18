@@ -21,72 +21,60 @@ $event_id = get_the_ID();
 
 ?>
 
-<div class="container">
-<div id="tribe-events-content" class="tribe-events-single">
-
-	<p class="tribe-events-back">
-		<a href="<?php echo esc_url( tribe_get_events_link() ); ?>"> <?php printf( '&laquo; ' . esc_html__( 'All %s', 'the-events-calendar' ), $events_label_plural ); ?></a>
-	</p>
-
-	<!-- Notices -->
-	<?php tribe_the_notices() ?>
-
-	<?php the_title( '<h1 class="tribe-events-single-event-title">', '</h1>' ); ?>
-
-	<div class="tribe-events-schedule tribe-clearfix">
-
-		<?php echo tribe_events_event_schedule_details( $event_id, '<h2>', '</h2>' ); ?>
-		<?php if ( tribe_get_cost() ) : ?>
-			<span class="tribe-events-divider">|</span>
-			<span class="tribe-events-cost"><?php echo tribe_get_cost( null, true ) ?></span>
-		<?php endif; ?>
-	</div>
-
-	<!-- Event header -->
-	<div id="tribe-events-header" <?php tribe_events_the_header_attributes() ?>>
-
-		<!-- Navigation -->
-		<h3 class="tribe-events-visuallyhidden"><?php printf( esc_html__( '%s Navigation', 'the-events-calendar' ), $events_label_singular ); ?></h3>
-		<ul class="tribe-events-sub-nav">
-			<li class="tribe-events-nav-previous"><?php tribe_the_prev_event_link( '<span>&laquo;</span> %title%' ) ?></li>
-			<li class="tribe-events-nav-next"><?php tribe_the_next_event_link( '%title% <span>&raquo;</span>' ) ?></li>
+<div class="l1">
+	<div class="banner-secundario">
+		<ul>
+			<li>
+				<div class="foto-banda">
+					<?php echo wp_get_attachment_image(get_field('banner_principal'), 'full'); ?>
+				</div>
+				<div class="tarja-laranja"></div>
+				<div class="alinha">
+					<div class="logo-banda">
+						<?php the_post_thumbnail(); ?>
+					</div>
+				</div>
+			</li>
 		</ul>
-		<!-- .tribe-events-sub-nav -->
 	</div>
-	<!-- #tribe-events-header -->
+</div>
 
-	<?php while ( have_posts() ) :  the_post(); ?>
-		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<!-- Event featured image, but exclude link -->
-			<?php echo tribe_event_featured_image( $event_id, 'full', false ); ?>
 
-			<!-- Event content -->
-			<?php do_action( 'tribe_events_single_event_before_the_content' ) ?>
-			<div class="tribe-events-single-event-description tribe-events-content">
-				<?php the_content(); ?>
+<div class="l3" style="background-color:white; padding-bottom:20px; height:auto;">
+	<div class="alinha evento">
+		<?php tribe_the_notices() ?>
+
+		<div class="header-evento">
+			<div class="data">
+				<img src="<?php echo get_template_directory_uri(). '/img/btn-evento-calendario.png' ?>" />
+				<label class="hora">20H</label><br/>
+				<label class="dia">01</label><br/>
+				<label class="semana">Quarta-Feira</label>
+			</div>
+			<div class="detalhes">
+				<h1><?php the_title(); ?></h1>
+				<h2>Vila Seu Justino | São Paulo, SP</h2>
+				<div class="mapa">
+					oi
+				</div>
+				<div class="botoes">
+					<a target="_blank" href="" class="facebook">Oficial</a>
+					<a href="#" class="participe">Participar</a>
+					<span style="text-align:right;float:right;font-style:italic;">
+						Rua Harmonia, 77, Vila Madalena / (11) 3245-0000<br />
+						Aberto das 18:00 ás 02:00 / Faixa de preços: $$$
+					</span>
+				</div>
 			</div>
 
+		<div>
+		<div class="imagem-evento">
+			<img src="<?php echo get_field('banner_secundario'); ?>" alt="Imagem do evento" />
+		</div>
+		<div class="conteudo-evento">
+			<?php the_content(); ?>
+		</div>
 
-			<!-- Event meta -->
-			<?php do_action( 'tribe_events_single_event_before_the_meta' ) ?>
-
-			<?php tribe_get_template_part( 'modules/meta' ); ?>
-			<?php do_action( 'tribe_events_single_event_after_the_meta' ) ?>
-		</div> <!-- #post-x -->
-		<?php if ( get_post_type() == Tribe__Events__Main::POSTTYPE && tribe_get_option( 'showComments', false ) ) comments_template() ?>
-	<?php endwhile; ?>
-
-	<!-- Event footer -->
-	<div id="tribe-events-footer">
-		<!-- Navigation -->
-		<h3 class="tribe-events-visuallyhidden"><?php printf( esc_html__( '%s Navigation', 'the-events-calendar' ), $events_label_singular ); ?></h3>
-		<ul class="tribe-events-sub-nav">
-			<li class="tribe-events-nav-previous"><?php tribe_the_prev_event_link( '<span>&laquo;</span> %title%' ) ?></li>
-			<li class="tribe-events-nav-next"><?php tribe_the_next_event_link( '%title% <span>&raquo;</span>' ) ?></li>
-		</ul>
-		<!-- .tribe-events-sub-nav -->
+	</div><!-- #tribe-events-content -->
 	</div>
-	<!-- #tribe-events-footer -->
-
-</div><!-- #tribe-events-content -->
 </div>
