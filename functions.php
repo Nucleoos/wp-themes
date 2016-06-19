@@ -19,6 +19,7 @@ function showbook_theme_scripts() {
 	wp_enqueue_script('scrollbox', get_template_directory_uri() . '/js/jquery.scrollbox.js', array('jquery'), '1.0');
 	wp_enqueue_script('tooltip-showbook-script', get_template_directory_uri() . '/js/tooltipster.bundle.js', array('jquery'), '1.0');
 	wp_enqueue_script('main-script', get_template_directory_uri() . '/js/main.js', array('jquery'), '1.0');
+	wp_enqueue_script('showbook-facebook-javascript', get_template_directory_uri() . '/js/facebook.js', array('jquery'), '1.0');
 }
 add_action( 'wp_enqueue_scripts', 'showbook_theme_scripts' );
 

@@ -60,6 +60,8 @@ get_header(); ?>
 							));
 							foreach( $events as $event ):
 								$data_evento = get_field('_EventStartDate', $event->ID);
+								$cidade = get_field('_VenueCity', $event->ID);
+								$estado = get_field('_VenueState', $event->ID);
 								$id_evento = $event->ID;
 							endforeach; ?>
 							<?php
@@ -77,7 +79,11 @@ get_header(); ?>
 							<?php } else { ?>
 								<span>Sem show</span>
 							<?php } ?>
-							<a class="map" href="#">Local</a>
+							<?php if(isset($id_evento)) { ?>
+								<a class="tooltip map" href="#" title="<?php echo tribe_get_city($id_evento).' - '.tribe_get_stateprovince($id_evento); ?>">Local</a>
+							<?php } else { ?>
+								<a class="map" href="#">Local</a>
+							<?php } ?>
 						</div>
 						<a href="<?php the_permalink(); ?>" class="artista-contrate">Contrate</a>
 					</li>

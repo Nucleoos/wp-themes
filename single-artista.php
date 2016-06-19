@@ -1,5 +1,18 @@
 <?php get_header(); ?>
 
+<script type="text/javascript">
+	$(document).ready(function(){
+		FB.api(
+		    "/366192290123608/photos",
+		    function (response) {
+		      if (response && !response.error) {
+		        alert(response)
+		      }
+		    }
+		);
+	});
+</script>
+
 <?php while ( have_posts() ) : the_post(); ?>
 	<div class="l1">
 		<div class="artista-banner">

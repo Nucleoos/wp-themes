@@ -14,6 +14,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
+function tribe_get_location_evento( $postId = null ) {
+	$postId = tribe_get_venue_id( $postId );
+	$output = tribe_get_event_meta( $postId, 'local_evento', true );
+	return apply_filters( 'tribe_get_location_evento', $output );
+}
+
+
 $events_label_singular = tribe_get_event_label_singular();
 $events_label_plural = tribe_get_event_label_plural();
 
@@ -46,18 +53,19 @@ $event_id = get_the_ID();
 
 		<div class="header-evento">
 			<div class="data">
+				<?php $data_evento = get_field('_EventStartDate'); ?>
 				<img src="<?php echo get_template_directory_uri(). '/img/btn-evento-calendario.png' ?>" />
-				<label class="hora">20H</label><br/>
-				<label class="dia">01</label><br/>
-				<label class="semana">Quarta-Feira</label>
+				<label class="hora"><?php echo date_i18n('H\H', strtotime($data_evento )) ?></label><br/>
+				<label class="dia"><?php echo date_i18n('d', strtotime($data_evento )) ?></label><br/>
+				<label class="semana"><?php echo date_i18n('l', strtotime($data_evento )) ?></label>
 			</div>
 			<div class="detalhes">
 				<h1><?php the_title(); ?></h1>
-				<h2>Vila Seu Justino | São Paulo, SP</h2>
+				<h2><?php echo tribe_get_venue().' | '.tribe_get_city().', '.tribe_get_stateprovince(); ?></h2>
 				<div class="mapa">
 					<?php
 					$venue_id = get_field('_EventVenueID');
-					$location = tribe_get_coordinates(get_the_ID());
+					$location = tribe_get_location_evento(get_the_ID());
 						if( ! empty($location) ): ?>
 							<div id="map" style="width: 100%; height: 74px;"></div>
 							<script src='http://maps.googleapis.com/maps/api/js?sensor=false' type='text/javascript'></script>
@@ -97,7 +105,7 @@ $event_id = get_the_ID();
 					<a target="_blank" href="" class="facebook">Oficial</a>
 					<a href="#" class="participe">Participar</a>
 					<span style="text-align:right;float:right;font-style:italic;">
-						Rua Harmonia, 77, Vila Madalena / (11) 3245-0000<br />
+					 <?php echo tribe_get_address().' / '.tribe_get_phone() ?><br />
 						Aberto das 18:00 ás 02:00 / Faixa de preços: $$$
 					</span>
 				</div>
