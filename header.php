@@ -31,7 +31,7 @@
         			<ul>
         				<li><a href="/artistas" class="btn01">Artistas</a></li>
         				<li><a href="/casas" class="btn02">Bares e Casas Noturnas</a></li>
-        				<li><a href="#" class="btn03">Fa&ccedil;a Parte</a></li>
+        				<li><a href="#" id="btn-faca-parte-menu" class="btn03">Fa&ccedil;a Parte</a></li>
         				<li><a href="/artistas" class="btn04">Contrate</a></li>
         				<li><a href="https://www.facebook.com/showbookagencia/" target="_blank" class="btn05">Facebook</a></li>
         			</ul>

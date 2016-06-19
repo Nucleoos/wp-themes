@@ -134,6 +134,7 @@ if ($alltags){
 							));
 							foreach( $events as $event ):
 								$data_evento = get_field('_EventStartDate', $event->ID);
+								$id_evento = $event->ID;
 								echo get_the_post_thumbnail($event->ID );
 							endforeach; ?>
 							<?php
@@ -145,11 +146,17 @@ if ($alltags){
 						</div>
 						<div class="artista-data">
 							<?php if(!is_null($data_evento)) { ?>
-								<span> <?php echo date_i18n('d.F /H\H', strtotime($data_evento )) ?> </span>
+								<a href="<?php echo get_the_permalink($id_evento); ?>">
+									<span> <?php echo date_i18n('d.F /H\H', strtotime($data_evento )) ?> </span>
+								</a>
 							<?php } else { ?>
 								<span>Sem show</span>
 							<?php } ?>
-							<a class="map" href="#">Local</a>
+							<?php if(isset($id_evento)) { ?>
+								<a class="tooltip map" href="#" title="<?php echo tribe_get_city($id_evento).' - '.tribe_get_stateprovince($id_evento); ?>">Local</a>
+							<?php } else { ?>
+								<a class="map" href="#">Local</a>
+							<?php } ?>
 						</div>
 						<a href="<?php the_permalink(); ?>" class="artista-contrate">Contrate</a>
 					</li>

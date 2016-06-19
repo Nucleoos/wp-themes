@@ -1,19 +1,116 @@
 <?php get_header(); ?>
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		FB.api(
-		    "/366192290123608/photos",
-		    function (response) {
-		      if (response && !response.error) {
-		        alert(response)
-		      }
-		    }
-		);
+<?php while ( have_posts() ) : the_post(); ?>
+
+<?php
+	$album_id = get_field('facebook_album_id');
+	$playlist_id = get_field('youtube_playlist_id');
+	if(isset($album_id) && trim($album_id)!=='') {
+ ?>
+
+<?php
+	$url = 'https://graph.facebook.com/v2.6/oauth/access_token?client_id=1630530173930954&client_secret=90f2d7807ef949002bac93107842991b&grant_type=client_credentials';
+	$json = file_get_contents($url);
+	$obj = json_decode($json);
+	$token = $obj->access_token;
+ ?>
+
+<script>
+  window.fbAsyncInit = function() {
+	FB.init({
+	  appId      : '1630530173930954',
+	  xfbml      : true,
+	  version    : 'v2.6'
 	});
+
+	FB.api(
+	    "/<?php echo $album_id; ?>/photos",
+		"get",
+		{'access_token': '<?php echo $token ?>', 'limit': 9},
+	    function (response) {
+	      if (response && !response.error) {
+			var contador = 0;
+	        for(var x in response.data){
+				var photo = response.data[x];
+				FB.api(
+				    "/" + photo.id,
+					'get',
+					{'access_token': '<?php echo $token ?>', 'fields': 'link,picture,images'},
+				    function (response) {
+				      if (response && !response.error) {
+						var li = document.createElement('li');
+						li.innerHTML = '<a target="_blank" href="' + response.link + '"><img src="' + response.picture + '" alt=""></a>';
+						document.getElementById('videos-fotos').appendChild(li);
+						if(contador == 0){
+							for(var i in  response.images){
+								var imagem = response.images[i];
+								if(imagem.height > 300){
+									var li = document.createElement('a');
+									li.href = response.link;
+									li.target = '_blank';
+									li.innerHTML = '<img src="' + imagem.source + '" alt="">'
+									document.getElementById('video-foto-principal').appendChild(li);
+									break;
+								}
+							}
+						}
+						contador++;
+				      }
+				    }
+				);
+			}
+	      }
+	    }
+	);
+  };
+
+  (function(d, s, id){
+	 var js, fjs = d.getElementsByTagName(s)[0];
+	 if (d.getElementById(id)) {return;}
+	 js = d.createElement(s); js.id = id;
+	 js.src = "//connect.facebook.net/en_US/sdk.js";
+	 fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
 </script>
 
-<?php while ( have_posts() ) : the_post(); ?>
+<?php }
+if(isset($playlist_id) && trim($playlist_id)!=='') {
+?>
+    <script>
+        function onGoogleLoad() {
+            gapi.client.setApiKey('AIzaSyAUA2WnCbkxbaqd-mD-ejsmGbBZUfTYn-c');
+            gapi.client.load('youtube', 'v3', function() {
+
+                var request = gapi.client.youtube.playlistItems.list({
+                    part: 'snippet',
+                    playlistId: '<?php echo $playlist_id ?>',
+                    maxResults: 9
+                });
+
+                request.execute(function(response) {
+                    for (var i = 0; i < response.items.length; i++) {
+						var video = response.items[i];
+
+						var li = document.createElement('li');
+						var youtubeLink = 'https://www.youtube.com/watch?v=' + video.snippet.resourceId.videoId;
+						li.innerHTML = '<a target="_blank" href="' + youtubeLink + '"><img src="' + video.snippet.thumbnails.default.url + '" alt=""></a>';
+						document.getElementById('videos-fotos').appendChild(li);
+
+						if(i==0){
+							var li = document.createElement('a');
+							li.href = youtubeLink;
+							li.target = '_blank';
+							li.innerHTML = '<img src="' + video.snippet.thumbnails.high.url + '" alt="">'
+							document.getElementById('video-foto-principal').appendChild(li);
+						}
+                    }
+                });
+            });
+        }
+    </script>
+    <script src="https://apis.google.com/js/client.js?onload=onGoogleLoad"></script>
+<?php } ?>
+
 	<div class="l1">
 		<div class="artista-banner">
 			<ul>
@@ -61,18 +158,9 @@
 			</div>
 			<div class="artista">
 				<div class="artista-video">
-					<div class="video-principal">
-						<a href="#"><img src="<?php echo get_template_directory_uri(). '/img/artistas/tmp/video-principal.jpg' ?>" alt=""></a>
+					<div id="video-foto-principal" class="video-principal">
 					</div>
-					<ul>
-						<li><a href="#"><img src="<?php echo get_template_directory_uri(). '/img/artistas/tmp/video-tmp.jpg' ?>" alt=""></a></li>
-						<li><a href="#"><img src="<?php echo get_template_directory_uri(). '/img/artistas/tmp/video-tmp.jpg' ?>" alt=""></a></li>
-						<li><a href="#"><img src="<?php echo get_template_directory_uri(). '/img/artistas/tmp/video-tmp.jpg' ?>" alt=""></a></li>
-						<li><a href="#"><img src="<?php echo get_template_directory_uri(). '/img/artistas/tmp/video-tmp.jpg' ?>" alt=""></a></li>
-						<li><a href="#"><img src="<?php echo get_template_directory_uri(). '/img/artistas/tmp/video-tmp.jpg' ?>" alt=""></a></li>
-						<li><a href="#"><img src="<?php echo get_template_directory_uri(). '/img/artistas/tmp/video-tmp.jpg' ?>" alt=""></a></li>
-						<li><a href="#"><img src="<?php echo get_template_directory_uri(). '/img/artistas/tmp/video-tmp.jpg' ?>" alt=""></a></li>
-						<li><a href="#"><img src="<?php echo get_template_directory_uri(). '/img/artistas/tmp/video-tmp.jpg' ?>" alt=""></a></li>
+					<ul id="videos-fotos">
 						<li><a target="_blank" href="<?php echo get_field('url_album_facebook'); ?>" title="Mais V&iacute;deos"><img src="<?php echo get_template_directory_uri(). '/img/mais-videos.png' ?>" alt=""></a></li>
 					</ul>
 				</div>
@@ -107,7 +195,7 @@
 									<span> <?php echo date_i18n('d.F /H\H', strtotime($data_evento )) ?> </span>
 								</a>
 							<?php } else { ?>
-								<span>SEM SHOW</span>
+							<span>SEM SHOW</span>
 							<?php } ?>
 						<a class="map" href="#">Local</a>
 					</div>

@@ -19,7 +19,6 @@ function showbook_theme_scripts() {
 	wp_enqueue_script('scrollbox', get_template_directory_uri() . '/js/jquery.scrollbox.js', array('jquery'), '1.0');
 	wp_enqueue_script('tooltip-showbook-script', get_template_directory_uri() . '/js/tooltipster.bundle.js', array('jquery'), '1.0');
 	wp_enqueue_script('main-script', get_template_directory_uri() . '/js/main.js', array('jquery'), '1.0');
-	wp_enqueue_script('showbook-facebook-javascript', get_template_directory_uri() . '/js/facebook.js', array('jquery'), '1.0');
 }
 add_action( 'wp_enqueue_scripts', 'showbook_theme_scripts' );
 
@@ -120,6 +119,48 @@ function cptui_register_my_cpts_artista() {
 if(function_exists("register_field_group"))
 {
 	register_field_group(array (
+		'id' => 'acf_campos-do-evento',
+		'title' => 'Campos do Evento',
+		'fields' => array (
+			array (
+				'key' => 'field_5765acc6011df',
+				'label' => 'Banner Principal',
+				'name' => 'banner_principal',
+				'type' => 'image',
+				'save_format' => 'id',
+				'preview_size' => 'medium',
+				'library' => 'all',
+			),
+			array (
+				'key' => 'field_5765ae3e5dc32',
+				'label' => 'Banner Secundario',
+				'name' => 'banner_secundario',
+				'type' => 'image',
+				'save_format' => 'url',
+				'preview_size' => 'medium',
+				'library' => 'all',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'tribe_events',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+	register_field_group(array (
 		'id' => 'acf_campos-local',
 		'title' => 'Campos Local',
 		'fields' => array (
@@ -205,11 +246,11 @@ if(function_exists("register_field_group"))
 			),
 			array (
 				'key' => 'field_575974a84aaad',
-				'label' => 'Url Album Facebook',
-				'name' => 'url_album_facebook',
+				'label' => 'Facebook Album Id',
+				'name' => 'facebook_album_id',
 				'type' => 'text',
 				'default_value' => '',
-				'placeholder' => 'Copie e cole aqui a url do album que você quer mostrar (album público)',
+				'placeholder' => 'Copie e cole aqui o Id do album que você quer mostrar (album público)',
 				'prepend' => '',
 				'append' => '',
 				'formatting' => 'html',
@@ -217,11 +258,11 @@ if(function_exists("register_field_group"))
 			),
 			array (
 				'key' => 'field_5761b076b2c4c',
-				'label' => 'Url Playlist Youtube',
-				'name' => 'url_playlist_youtube',
+				'label' => 'ID Playlist Youtube',
+				'name' => 'youtube_playlist_id',
 				'type' => 'text',
 				'default_value' => '',
-				'placeholder' => 'Copie e cole aqui a url da playlist que você quer mostrar (playlist pública)',
+				'placeholder' => 'Copie e cole aqui o ID da playlist que você quer mostrar (playlist pública)',
 				'prepend' => '',
 				'append' => '',
 				'formatting' => 'html',

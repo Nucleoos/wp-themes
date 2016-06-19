@@ -586,10 +586,9 @@ html,body{
 					float: left;
 					width: 22.25em;
 					height: 12.5em;
-					background: #999;
+					text-align: center;
 					}
-					.artista-video .video-principal a img{
-						float: left;
+					.artista-video .video-principal a img{						
 						width: auto;
 						height: 100%;
 					}
