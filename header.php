@@ -22,17 +22,17 @@
     <header>
         <div class="menu-topo menu-interno">
             <div class="alinha">
-                <a href="/home/">
+                <a href="<?php echo get_permalink(get_page_by_path('home')); ?>">
             		<div class="logo-topo">
                         Show Book
             		</div>
                 </a>
         		<nav>
         			<ul>
-        				<li><a href="/artistas" class="btn01">Artistas</a></li>
-        				<li><a href="/casas" class="btn02">Bares e Casas Noturnas</a></li>
+        				<li><a href="<?php echo get_permalink(get_page_by_path('artistas' )); ?>" class="btn01">Artistas</a></li>
+        				<li><a href="<?php echo get_permalink(get_page_by_path('casas' )) ?>" class="btn02">Bares e Casas Noturnas</a></li>
         				<li><a href="#" id="btn-faca-parte-menu" class="btn03">Fa&ccedil;a Parte</a></li>
-        				<li><a href="/artistas" class="btn04">Contrate</a></li>
+        				<li><a href="<?php echo get_permalink(get_page_by_path('artistas')); ?>" class="btn04">Contrate</a></li>
         				<li><a href="https://www.facebook.com/showbookagencia/" target="_blank" class="btn05">Facebook</a></li>
         			</ul>
         		</nav>

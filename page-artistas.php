@@ -44,7 +44,7 @@
 				<label>Selecione por</label>
 			</div>
 			<div style="float:left;width:75%;">
-				<form method="get" action="/artistas">
+				<form method="get" action="<?php echo get_permalink(get_page_by_path('artistas' )); ?>">
 					<span class="orange">Região:</span>
 					<?php $alltags = get_terms('category');
 					if ($alltags){
@@ -91,6 +91,7 @@ if(isset($regiao)){
 }
 $alltags = get_terms('category', $args_term);
 if ($alltags){
+  $found = false;
   foreach( $alltags as $tag ) {
     $args=array(
       'cat' => $tag->term_id,
@@ -102,7 +103,6 @@ if ($alltags){
 	if(isset($pesquisa)){
 		$args['s'] = $pesquisa;
 	}
-	$found = false;
 	$my_query = null;
     $my_query = new WP_Query($args);
     if( $my_query->have_posts() ) {
@@ -121,6 +121,7 @@ if ($alltags){
 					<?php $old = $post; $data_evento=null; $found=true; ?>
 					<li>
 						<div class="artista-img">
+							<?php the_post_thumbnail(); ?>
 							<?php
 							$events = get_posts(array(
 								'post_type' => 'tribe_events',
@@ -135,14 +136,13 @@ if ($alltags){
 							foreach( $events as $event ):
 								$data_evento = get_field('_EventStartDate', $event->ID);
 								$id_evento = $event->ID;
-								echo get_the_post_thumbnail($event->ID );
 							endforeach; ?>
 							<?php
 								$post = $old;  // reset the post from the main loop
                                 $id = $old->ID; ?>
 						</div>
 						<div class="artista-logo">
-							<?php the_post_thumbnail(); ?>
+							<?php echo wp_get_attachment_image(get_field('banner_miniatura'), 'events-thumbnail'); ?>
 						</div>
 						<div class="artista-data">
 							<?php if(!is_null($data_evento)) { ?>

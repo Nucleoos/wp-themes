@@ -5,28 +5,20 @@ get_header(); ?>
 <div class="l1">
 	<div class="banner-principal">
 		<ul>
+			<?php $loop = new WP_Query( array( 'post_type' => 'artista', 'posts_per_page' => 4, 'orderby'=> 'rand' ) ); ?>
+			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 			<li>
 				<div class="foto-banda">
-					<img src="<?php echo get_template_directory_uri(). '/img/banner/banda01/foto.jpg' ?>" alt="">
+					<?php echo wp_get_attachment_image(get_field('banner_principal'), 'full'); ?>
 				</div>
 				<div class="tarja-laranja"></div>
 				<div class="alinha">
 					<div class="logo-banda">
-						<img src="<?php echo get_template_directory_uri(). '/img/banner/banda01/logo.jpg' ?>" alt="">
+						<?php the_post_thumbnail(); ?>
 					</div>
 				</div>
-			</li>
-			<li>
-				<div class="foto-banda">
-					<img src="<?php echo get_template_directory_uri(). '/img/banner/banda02/foto.jpg' ?>" alt="">
-				</div>
-				<div class="tarja-laranja"></div>
-				<div class="alinha">
-					<div class="logo-banda">
-						<img src="<?php echo get_template_directory_uri(). '/img/banner/banda02/logo.jpg' ?>" alt="">
-					</div>
-				</div>
-			</li>
+			</li>			
+			<?php endwhile; wp_reset_query();  ?>
 		</ul>
 	</div>
 </div>

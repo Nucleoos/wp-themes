@@ -41,7 +41,7 @@
 				<label>Selecione por</label>
 			</div>
 			<div style="float:left;width:75%;">
-				<form method="get" action="/casas">
+				<form method="get" action="<?php echo get_permalink(get_page_by_path('casas' )); ?>">
 					<span class="orange">Região:</span>
 					<?php $alltags = get_terms('regiao');
 					if ($alltags){
@@ -131,7 +131,7 @@ if ($alltags){
 						<?php echo wp_get_attachment_image(get_field('secondary_image'), 'events-thumbnail'); ?>
 					</div>
 					<div class="bar-shows">
-						<a href="/local?slug=<?php echo basename(get_permalink()); ?>">
+						<a href="<?php echo get_permalink(get_page_by_path('local' )); ?>?slug=<?php echo basename(get_permalink()); ?>">
 							<span>pr&oacute;ximos shows</span>
 						</a>
 						<a class="tooltip maps" title="<?php echo get_field('_VenueCity').' - '.get_field('_VenueState') ; ?>" href="#"></a>
