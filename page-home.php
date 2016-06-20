@@ -17,7 +17,7 @@ get_header(); ?>
 						<?php the_post_thumbnail(); ?>
 					</div>
 				</div>
-			</li>			
+			</li>
 			<?php endwhile; wp_reset_query();  ?>
 		</ul>
 	</div>
@@ -27,7 +27,7 @@ get_header(); ?>
 	<div class="alinha">
 		<header>
 			<h2>Artistas</h2>
-			<a href="/artistas" class="exibir-todos">Exibir Todos</a>
+			<a href="<?php echo get_permalink(get_page_by_path('artistas' )); ?>" class="exibir-todos">Exibir Todos</a>
 		</header>
 		<a href="javascript:next_artista();" class="plus">+</a>
 		<span class="plus-sombra"></span>
@@ -88,7 +88,7 @@ get_header(); ?>
 	<div class="alinha">
 	<header>
 		<h3>Bares e casas noturnas</h3>
-		<a href="/casas" class="exibir-todos">Exibir Todos</a>
+		<a href="<?php echo get_permalink(get_page_by_path('casas' )); ?>" class="exibir-todos">Exibir Todos</a>
 	</header>
 		<a href="javascript:next_bar();" class="plus">+</a>
 		<span class="plus-sombra"></span>
@@ -105,7 +105,7 @@ get_header(); ?>
 						<?php echo wp_get_attachment_image(get_field('secondary_image'), 'events-thumbnail'); ?>
 					</div>
 					<div class="bar-shows">
-						<a href="/local?slug=<?php echo basename(get_permalink()); ?>">
+						<a href="<?php echo get_permalink(get_page_by_path('local' )); ?>?slug=<?php echo basename(get_permalink()); ?>">
 							<span>pr&oacute;ximos shows</span>
 						</a>
 						<a class="tooltip maps" title="<?php echo get_field('_VenueCity').' - '.get_field('_VenueState') ; ?>" href="#"></a>

@@ -123,6 +123,27 @@ if(function_exists("register_field_group"))
 		'title' => 'Campos do Evento',
 		'fields' => array (
 			array (
+				'key' => 'field_576815ef2d5ed',
+				'label' => 'Artistas',
+				'name' => 'artistas',
+				'type' => 'relationship',
+				'return_format' => 'object',
+				'post_type' => array (
+					0 => 'artista',
+				),
+				'taxonomy' => array (
+					0 => 'all',
+				),
+				'filters' => array (
+					0 => 'search',
+				),
+				'result_elements' => array (
+					0 => 'post_type',
+					1 => 'post_title',
+				),
+				'max' => '',
+			),
+			array (
 				'key' => 'field_5765acc6011df',
 				'label' => 'Banner Principal',
 				'name' => 'banner_principal',
