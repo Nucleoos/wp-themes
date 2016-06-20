@@ -186,6 +186,9 @@ div.evento .imagem-evento img {
     max-width: 960px;
     max-height: 300px;
 }
+div.evento .header-evento{
+    margin-top: 20px;
+}
 div.evento .header-evento .data {
     float: left;
     width: 170px;
@@ -271,6 +274,9 @@ div.evento .header-evento .detalhes .botoes a.facebook{
     overflow: hidden;
     text-indent: -100px;
     float:left;
+}
+div.evento .header-evento .imagem-evento img{
+    margin-top: 10px;
 }
 div.evento .conteudo-evento {
     margin-left: 180px;

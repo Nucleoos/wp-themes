@@ -186,6 +186,18 @@ if(function_exists("register_field_group"))
 		'title' => 'Campos Local',
 		'fields' => array (
 			array (
+				'key' => 'field_ds87sfjdk23',
+				'label' => 'Resumo Local',
+				'name' => 'resumo_local',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => 'Aberto da ..... / Faixa de preço: ...',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'html',
+				'maxlength' => '',
+			),
+			array (
 				'key' => 'field_5761ef2ac777c',
 				'label' => 'Url Facebook',
 				'name' => 'url_facebook',

@@ -22,7 +22,7 @@
 					<div class="tarja-laranja"></div>
 					<div class="alinha">
 						<div class="logo-banda">
-							<?php the_post_thumbnail(); ?>							
+							<?php the_post_thumbnail(); ?>
 						</div>
 					</div>
 				</li>
@@ -46,7 +46,7 @@
 					<div class="local-endereco">
 						<label><?php echo get_field('_VenueAddress').' / '.get_field('_VenuePhone'); ?></label>
 						<label><?php echo get_field('_VenueCity').','.get_field('_VenueState'); ?></label></br>
-						<label>Aberto das 18:00 as 02:00 / Faixa de preço: $$$</label>
+						<label><?php echo get_field('resumo_local'); ?></label>
 					</div>
 				</div>
 				<div class="local-mapa">

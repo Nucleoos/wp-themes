@@ -106,7 +106,7 @@ $event_id = get_the_ID();
 					<a href="#" class="participe">Participar</a>
 					<span style="text-align:right;float:right;font-style:italic;">
 					 <?php echo tribe_get_address().' / '.tribe_get_phone() ?><br />
-						Aberto das 18:00 ás 02:00 / Faixa de preços: $$$
+						<?php the_excerpt(); ?>
 					</span>
 				</div>
 			</div>
