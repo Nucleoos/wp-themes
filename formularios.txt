@@ -57,7 +57,7 @@
 </div>
 <div class="campo03">
     <label>Modalidade Escolhida:</label>
-    [radio radio-788 default:1 "X" "Y" "Z"]
+    <a href="http://showbook.com.br/wp/wp-content/uploads/2016/06/ShowBook_MinutaParceria01.docx">[radio radio-788 default:1 "Parceria 1"]</a><a href="http://showbook.com.br/wp/wp-content/uploads/2016/06/ShowBook_MinutaParceria02.docx">[radio radio-788 "Parceria 2"]</a><a href="http://showbook.com.br/wp/wp-content/uploads/2016/06/ShowBook_MinutaParceria03.docx">[radio radio-788 "Parceria 3"]</a>
 </div>
 <div class="campo03">
     <p>[acceptance aceito-contrato default:on]Eu li e estou de acordo com o contrato de parceria.</p>

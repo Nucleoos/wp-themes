@@ -1,11 +1,13 @@
 <?php get_header(); ?>
 
 <div class="l1">
-	<div class="banner-secundario">
+	<div class="banner-principal">
 		<ul>
+			<?php $loop = new WP_Query( array( 'post_type' => 'casas', 'posts_per_page' => 4, 'orderby'=> 'rand' ) ); ?>
+			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 			<li>
 				<div class="foto-banda">
-					<img src="<?php echo get_option('showbook_theme_image_banner_casas') ?>" />
+					<?php echo wp_get_attachment_image(get_field('banner_principal'), 'full'); ?>
 				</div>
 				<div class="tarja-laranja"></div>
 				<div class="alinha">
@@ -14,6 +16,7 @@
 					</div>
 				</div>
 			</li>
+			<?php endwhile; wp_reset_query();  ?>
 		</ul>
 	</div>
 </div>
