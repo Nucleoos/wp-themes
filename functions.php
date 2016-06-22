@@ -4,6 +4,7 @@ function showbook_theme_scripts() {
 	// Add css.
 	wp_enqueue_style( 'basic-sh', get_template_directory_uri() . '/css/basic.css', array(), '1.0' );
     wp_enqueue_style( 'custom-sh', get_template_directory_uri() . '/css/custom.css', array(), '1.0' );
+	wp_enqueue_style( 'agenda-showbook', get_template_directory_uri() . '/css/agenda.css', array(), '1.0' );
 	wp_enqueue_style( 'tooltip-showbook', get_template_directory_uri() . '/css/tooltipster.bundle.css', array(), '1.0' );
 	wp_enqueue_style( 'tooltip-borderless-showbook', get_template_directory_uri() . '/css/tooltipster-sideTip-borderless.min.css', array(), '1.0' );
 

@@ -18,6 +18,10 @@ jQuery(function($) {
     $('#bares-carossel').scrollbox({
         direction: 'h',
         distance: 235,
+    });    
+    $('#agenda-carossel').scrollbox({
+        direction: 'h',
+        distance: 480,
     });
 
     /*  Abre e fecha faça parte  */
@@ -50,9 +54,13 @@ jQuery(function($) {
 });
 
 function next_artista() {
-    jQuery('.artistas').trigger('forward');
+    jQuery('#artistas-carossel').trigger('forward');
 }
 
 function next_bar() {
-    jQuery('.bares').trigger('forward');
+    jQuery('#bares-carossel').trigger('forward');
+}
+
+function next_agenda() {
+    jQuery('#agenda-carossel').trigger('forward');
 }

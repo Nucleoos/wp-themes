@@ -9,6 +9,15 @@ a.plus {
     right: 1em;
     height: 27.75em;
 }
+div.exibe-agenda a.plus {
+    top:0px;
+    right:0px;
+}
+div.exibe-agenda-hidden ul {
+    width:158.125em;
+    height: 28.125em;
+    float: left;
+}
 .plus-sombra {
     top: 90px;
     right: 8.5em;

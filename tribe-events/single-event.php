@@ -50,7 +50,6 @@ $event_id = get_the_ID();
 <div class="l3" style="background-color:white; padding-bottom:20px; height:auto;">
 	<div class="alinha evento">
 		<?php tribe_the_notices() ?>
-
 		<div class="header-evento">
 			<div class="data">
 				<?php $data_evento = get_field('_EventStartDate'); ?>

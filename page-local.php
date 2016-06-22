@@ -88,13 +88,110 @@
 			</div>
 		</div>
 	</div>
-	<div class="l3" style="background-color:#4f4f4f; padding-bottom:80px; padding-top:40px;">
-		<div class="alinha">
-			<header class="local">
-				<img src="<?php echo get_template_directory_uri(). '/img/btn-agenda.png' ?>" alt="">
-			</header>
-		</div>
-	</div>
+
+
+	<div class="l3 agenda">
+	   <div class="alinha">
+    		<header>
+    			<h4>Agenda</h4>
+    		</header>
+    		<div class="exibe-agenda">
+                <a  href="javascript:next_agenda();" class="plus">+</a>
+    			<div id="agenda-carossel" class="exibe-agenda-hidden">
+                    <ul>
+                    <?php
+                        $events = get_posts(array(
+                            'post_type' => 'tribe_events',
+                            'meta_query' => array(
+                                array(
+                                    'key' => '_EventVenueID', // name of custom field
+                                    'value' => get_the_ID(),
+                                    'compare' => '='
+                                )
+                            ),
+                            'meta_key' => '_EventStartDate',
+                            'orderby' => 'meta_value',
+                            'order' => 'asc',
+                        ));
+                        $latest_day = '';
+                        $latest_month = '';
+                        $count_month = -1;
+                        $count_day = -1;
+                        foreach( $events as $event ):
+                            $data_evento = get_field('_EventStartDate', $event->ID);
+                            $current_month = date_i18n('F', strtotime($data_evento ));
+                            $current_day = date_i18n('d', strtotime($data_evento ));
+                            if($latest_day != $current_day){
+                                $count_day++;
+                            }
+                            if($latest_month != $current_month){
+                                $count_month++;
+                            }
+                            $classe_mes = $count_month%2==0?'mes-a':'mes-b';
+                            $classe_dia = $count_day%2==0?'dia-a':'dia-b';
+                        ?>
+
+                        <?php if($latest_day != $current_day && $latest_day != '') { ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        <?php } ?>
+
+                        <?php if($latest_month != $current_month && $latest_month != '') { ?>
+                            </div>
+                            </li>
+                        <?php } ?>
+
+                        <?php if($latest_month != $current_month){ ?>
+                        <li>
+        				    <div class="<?php echo $classe_mes; ?>">
+        				        <div class="nome-mes">
+                                    <p><?php echo $current_month; ?></p>
+                                </div>
+                        <?php }
+                            if($latest_day != $current_day){
+                        ?>
+            					<!-- -->
+            					<div class="<?php echo $classe_dia; ?>">
+            						<div class="data-mes">
+            							<div class="data-dia"><p><?php echo date_i18n('d', strtotime($data_evento )); ?></p></div>
+            							<div class="data-semana"><p><?php echo date_i18n('l', strtotime($data_evento )); ?></p></div>
+            						</div>
+            						<div class="agenda-detalhe">
+            							<ul>
+                        <?php } ?>
+
+                            <li>
+                                <div class="agrupa-detalhe">
+                                    <span><img src="<?php echo get_template_directory_uri(); ?>/img/calendario/tmp/artista-tmp.jpg" alt=""></span>
+                                    <div class="nome-banda"><p><?php echo get_the_title($event->ID); ?></p></div>
+                                    <div class="hora-show"><p><?php echo date_i18n('H\h', strtotime($data_evento )); ?></p></div>
+                                    <?php $custo = get_field('_EventCost', $event->ID);
+                                        if($custo != ''){
+                                    ?>
+                                        <div class="valor-show"><p>R$ <?php echo ($custo=='0'?'free':$custo) ?></p></div>
+                                    <?php } ?>
+                                </div>
+                                <a href="#">+</a>
+                            </li>
+
+                        <?php
+                            $latest_day = $current_day;
+                            $latest_month = $current_month;
+                            endforeach; ?>
+
+                        </ul>
+                        </div>
+                        </div>
+                        </div>
+                        </li>
+
+                        </ul>
+    				</div>
+    			 </div>
+		      </div>
+	       </div>
+        </div>
 
 
 <?php endwhile;
