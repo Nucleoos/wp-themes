@@ -146,7 +146,7 @@ if(function_exists("register_field_group"))
 			),
 			array (
 				'key' => 'field_5765acc6011df',
-				'label' => 'Banner Principal',
+				'label' => 'Banner Principal (1900x700px)',
 				'name' => 'banner_principal',
 				'type' => 'image',
 				'save_format' => 'id',
@@ -155,7 +155,7 @@ if(function_exists("register_field_group"))
 			),
 			array (
 				'key' => 'field_5765ae3e5dc32',
-				'label' => 'Banner Secundario',
+				'label' => 'Banner Secundario (960x300px)',
 				'name' => 'banner_secundario',
 				'type' => 'image',
 				'save_format' => 'url',
@@ -186,6 +186,24 @@ if(function_exists("register_field_group"))
 		'id' => 'acf_campos-local',
 		'title' => 'Campos Local',
 		'fields' => array (
+            array (
+				'key' => 'field_5761da943a37e',
+				'label' => 'Banner Principal (1900x700px)',
+				'name' => 'banner_principal',
+				'type' => 'image',
+				'save_format' => 'id',
+				'preview_size' => 'medium',
+				'library' => 'all',
+			),
+			array (
+				'key' => 'field_5761bcb03eas24',
+				'label' => 'Banner Miniatura (210x210px)',
+				'name' => 'banner_miniatura',
+				'type' => 'image',
+				'save_format' => 'id',
+				'preview_size' => 'medium',
+				'library' => 'all',
+			),
 			array (
 				'key' => 'field_ds87sfjdk23',
 				'label' => 'Resumo Local',
@@ -209,15 +227,6 @@ if(function_exists("register_field_group"))
 				'append' => '',
 				'formatting' => 'html',
 				'maxlength' => '',
-			),
-			array (
-				'key' => 'field_5761da943a37e',
-				'label' => 'Banner Principal',
-				'name' => 'banner_principal',
-				'type' => 'image',
-				'save_format' => 'id',
-				'preview_size' => 'full',
-				'library' => 'all',
 			),
 			array (
 				'key' => 'field_5761e11822ccf',
@@ -255,8 +264,17 @@ if(function_exists("register_field_group"))
 		'fields' => array (
 			array (
 				'key' => 'field_572b2d07053eb',
-				'label' => 'Banner Principal',
+				'label' => 'Banner Principal (1900x700px)',
 				'name' => 'banner_principal',
+				'type' => 'image',
+				'save_format' => 'id',
+				'preview_size' => 'medium',
+				'library' => 'all',
+			),
+			array (
+				'key' => 'field_5761bcb03e6fb',
+				'label' => 'Banner Miniatura (185x185px)',
+				'name' => 'banner_miniatura',
 				'type' => 'image',
 				'save_format' => 'id',
 				'preview_size' => 'medium',
@@ -313,15 +331,6 @@ if(function_exists("register_field_group"))
 				'append' => '',
 				'formatting' => 'html',
 				'maxlength' => '',
-			),
-			array (
-				'key' => 'field_5761bcb03e6fb',
-				'label' => 'Banner Miniatura',
-				'name' => 'banner_miniatura',
-				'type' => 'image',
-				'save_format' => 'id',
-				'preview_size' => 'events-thumbnail',
-				'library' => 'all',
 			),
 		),
 		'location' => array (

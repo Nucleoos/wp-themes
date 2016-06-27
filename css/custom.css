@@ -537,8 +537,8 @@ html,body{
 		}
 		.artista-logo{
 			float: left;
-			width: 11.563em;
-			height: 11.563em;
+			width: 185px;
+			height: 185px;
 			overflow: hidden;
 			}
 			.artista-logo img{
@@ -588,7 +588,7 @@ html,body{
 					height: 12.5em;
 					text-align: center;
 					}
-					.artista-video .video-principal a img{						
+					.artista-video .video-principal a img{
 						width: auto;
 						height: 100%;
 					}

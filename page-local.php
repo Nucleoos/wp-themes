@@ -98,7 +98,6 @@
     		<div class="exibe-agenda">
                 <a  href="javascript:next_agenda();" class="plus">+</a>
     			<div id="agenda-carossel" class="exibe-agenda-hidden">
-                    <ul>
                     <?php
                         $events = get_posts(array(
                             'post_type' => 'tribe_events',
@@ -112,6 +111,7 @@
                             'meta_key' => '_EventStartDate',
                             'orderby' => 'meta_value',
                             'order' => 'asc',
+                            'nopaging' => true,
                         ));
                         $latest_day = '';
                         $latest_month = '';
@@ -139,11 +139,9 @@
 
                         <?php if($latest_month != $current_month && $latest_month != '') { ?>
                             </div>
-                            </li>
                         <?php } ?>
 
                         <?php if($latest_month != $current_month){ ?>
-                        <li>
         				    <div class="<?php echo $classe_mes; ?>">
         				        <div class="nome-mes">
                                     <p><?php echo $current_month; ?></p>
@@ -163,7 +161,7 @@
 
                             <li>
                                 <div class="agrupa-detalhe">
-                                    <span><img src="<?php echo get_template_directory_uri(); ?>/img/calendario/tmp/artista-tmp.jpg" alt=""></span>
+                                    <span><?php echo get_the_post_thumbnail($event->ID); ?></span>
                                     <div class="nome-banda"><p><?php echo get_the_title($event->ID); ?></p></div>
                                     <div class="hora-show"><p><?php echo date_i18n('H\h', strtotime($data_evento )); ?></p></div>
                                     <?php $custo = get_field('_EventCost', $event->ID);
@@ -172,7 +170,7 @@
                                         <div class="valor-show"><p>R$ <?php echo ($custo=='0'?'free':$custo) ?></p></div>
                                     <?php } ?>
                                 </div>
-                                <a href="#">+</a>
+                                <a href="<?php echo get_the_permalink($event->ID); ?>">+</a>
                             </li>
 
                         <?php
@@ -184,9 +182,6 @@
                         </div>
                         </div>
                         </div>
-                        </li>
-
-                        </ul>
     				</div>
     			 </div>
 		      </div>
