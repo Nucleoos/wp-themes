@@ -99,26 +99,36 @@
                 <a  href="javascript:next_agenda();" class="plus">+</a>
     			<div id="agenda-carossel" class="exibe-agenda-hidden">
                     <?php
-                        $events = get_posts(array(
-                            'post_type' => 'tribe_events',
-                            'meta_query' => array(
-                                array(
-                                    'key' => '_EventVenueID', // name of custom field
-                                    'value' => get_the_ID(),
-                                    'compare' => '='
-                                )
-                            ),
-                            'meta_key' => '_EventStartDate',
-                            'orderby' => 'meta_value',
-                            'order' => 'asc',
-                            'nopaging' => true,
-                        ));
+                        $m= date("m");
+                        $de= date("d");
+                        $y= date("Y");
                         $latest_day = '';
                         $latest_month = '';
                         $count_month = -1;
                         $count_day = -1;
-                        foreach( $events as $event ):
-                            $data_evento = get_field('_EventStartDate', $event->ID);
+                        //foreach( $events as $event ){
+                        for($i=0; $i<=14; $i++){
+                            $data_evento = date('Y-m-d',mktime(0,0,0,$m,($de+$i),$y));
+                            $events = get_posts(array(
+                                'post_type' => 'tribe_events',
+                                'meta_query' => array(
+                                    array(
+                                        'key' => '_EventVenueID', // name of custom field
+                                        'value' => get_the_ID(),
+                                        'compare' => '='
+                                    ),
+                                    array(
+                                        'key' => '_EventStartDate',
+                                        'value' => array($data_evento, $data_evento),
+                                        'compare' => 'BETWEEN',
+                                        'type' => 'DATE'
+                                    )
+                                ),
+                                'meta_key' => '_EventStartDate',
+                                'orderby' => 'meta_value',
+                                'order' => 'asc',
+                                'nopaging' => true,
+                            ));
                             $current_month = date_i18n('F', strtotime($data_evento ));
                             $current_day = date_i18n('d', strtotime($data_evento ));
                             if($latest_day != $current_day){
@@ -159,11 +169,14 @@
             							<ul>
                         <?php } ?>
 
+                            <?php foreach($events as $event):
+                                $evento_data = get_field('_EventStartDate', $event->ID);
+                                ?>
                             <li>
                                 <div class="agrupa-detalhe">
                                     <span><?php echo get_the_post_thumbnail($event->ID); ?></span>
                                     <div class="nome-banda"><p><?php echo get_the_title($event->ID); ?></p></div>
-                                    <div class="hora-show"><p><?php echo date_i18n('H\h', strtotime($data_evento )); ?></p></div>
+                                    <div class="hora-show"><p><?php echo date_i18n('H\h', strtotime($evento_data)); ?></p></div>
                                     <?php $custo = get_field('_EventCost', $event->ID);
                                         if($custo != ''){
                                     ?>
@@ -174,9 +187,10 @@
                             </li>
 
                         <?php
+                            endforeach;
                             $latest_day = $current_day;
                             $latest_month = $current_month;
-                            endforeach; ?>
+                            } ?>
 
                         </ul>
                         </div>
