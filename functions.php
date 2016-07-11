@@ -7,6 +7,7 @@ function showbook_theme_scripts() {
 	wp_enqueue_style( 'agenda-showbook', get_template_directory_uri() . '/css/agenda.css', array(), '1.0' );
 	wp_enqueue_style( 'tooltip-showbook', get_template_directory_uri() . '/css/tooltipster.bundle.css', array(), '1.0' );
 	wp_enqueue_style( 'tooltip-borderless-showbook', get_template_directory_uri() . '/css/tooltipster-sideTip-borderless.min.css', array(), '1.0' );
+    wp_enqueue_style('showbook-ui-css', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/base/jquery-ui.css', false, '1.0', false);
 
 	if (! is_page('home') ){
 		wp_enqueue_style( 'pages-sh', get_template_directory_uri() . '/css/pages.css', array(), '1.0' );
@@ -19,7 +20,10 @@ function showbook_theme_scripts() {
 	wp_enqueue_script('jcycle', get_template_directory_uri() . '/js/jcycle.js', array('jquery'), '1.0');
 	wp_enqueue_script('scrollbox', get_template_directory_uri() . '/js/jquery.scrollbox.js', array('jquery'), '1.0');
 	wp_enqueue_script('tooltip-showbook-script', get_template_directory_uri() . '/js/tooltipster.bundle.js', array('jquery'), '1.0');
-	wp_enqueue_script('main-script', get_template_directory_uri() . '/js/main.js', array('jquery'), '1.0');
+    wp_enqueue_script('jquery-ui-datepicker');
+    wp_enqueue_script('showbook-maps-script', 'http://maps.google.com/maps/api/js?sensor=false&libraries=places', array('jquery'), '1.0');
+    wp_enqueue_script('showbook-locationpicker-script', get_template_directory_uri() . '/js/locationpicker.jquery.min.js', array('showbook-maps-script'), '1.0');
+	wp_enqueue_script('main-script', get_template_directory_uri() . '/js/main.js', array('jquery', 'jquery-ui-datepicker', 'showbook-locationpicker-script'), '1.0');
 }
 add_action( 'wp_enqueue_scripts', 'showbook_theme_scripts' );
 

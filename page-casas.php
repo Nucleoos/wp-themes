@@ -59,15 +59,6 @@
 						</span>
 					<?php } } ?>
 					</br>
-					<span class="orange">Ordem Alfabética:</span>
-					<?php if(isset($ordem) && $ordem === 'desc') { ?>
-						<span><input type="radio" value="asc" name="ordem" />Crescente</span>
-						<span><input type="radio" value="desc" checked name="ordem" />Decrescente</span>
-					<?php } else { ?>
-						<span><input type="radio" value="asc" checked name="ordem" />Crescente</span>
-						<span><input type="radio" value="desc" name="ordem" />Decrescente</span>
-					<?php } ?>
-					</br>
 					<span class="orange">Buscar:</span>
 					<?php if(isset($pesquisa)) { ?>
 						<input name="pesquisa" type="text" value="<?php echo $pesquisa ?>" />

@@ -290,7 +290,7 @@ html,body{
 			margin-right: 8.75em;
 			border-radius: .5em;
 			cursor: pointer;
-			z-index: 73;
+			z-index: 61;
 			-webkit-transition: all .25s ease;
 			   -moz-transition: all .25s ease;
 			    -ms-transition: all .25s ease;
@@ -305,10 +305,10 @@ html,body{
 				top: 3.25em;
 				right: 1.74em !important;
 				width: 12em;
-				height: 15em;
+				height: 18em;
 				padding: 1.5em .5em 1em;
 				background: #FFF;
-				z-index: 72;
+				z-index: 60;
 				border-radius: .5em;
 				box-shadow: 0em 0em 1em rgba(0, 0, 0, .5);
 				display: none;
@@ -1336,10 +1336,10 @@ a.plus{
 				top: 3.25em;
 				right: 4.75em;
 				width: 12em;
-				height: 15em;
+				height: 18em;
 				padding: 1.5em .5em 1em;
 				background: #FFF;
-				z-index: 70;
+				z-index: 60;
 				border-radius: .5em;
 				display: none;
 				}
