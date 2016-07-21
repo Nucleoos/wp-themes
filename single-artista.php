@@ -94,7 +94,7 @@ if(isset($playlist_id) && trim($playlist_id)!=='') {
 
                         var li = document.createElement('li');
                         var youtubeLink = 'https://www.youtube.com/watch?v=' + video.snippet.resourceId.videoId;
-                        var html = '<div><a href="' + youtubeLink +  '" target="_blank" style="position: absolute; display: block; z-index: 5; background: url(&quot;/wp-content/themes/showbook/img/play-youtube.png&quot;);background-size:100%;background-position:center;background-repeat:no-repeat;"></a>';
+                        var html = '<div><a href="' + youtubeLink +  '" target="_blank" style="position: absolute; display: block; z-index: 5; background: url(&quot;/wp/wp-content/themes/wp-themes/img/play-youtube.png&quot;);background-size:100%;background-position:center;background-repeat:no-repeat;"></a>';
                         html += '<a target="_blank" href="' + youtubeLink + '"><img src="' + video.snippet.thumbnails.default.url + '" alt=""></a></div>';
                         li.innerHTML = html;
                         document.getElementById('videos-fotos').appendChild(li);
@@ -103,7 +103,7 @@ if(isset($playlist_id) && trim($playlist_id)!=='') {
                             var a1 = document.createElement('a');
                             a1.href = youtubeLink;
                             a1.target = '_blank';
-                            a1.style = "position: absolute; display: block;background: url('/wp-content/themes/showbook/img/play-youtube.png'); background-size:100%;z-index:5;";
+                            a1.style = "position: absolute; display: block;background: url('/wp/wp-content/themes/wp-themes/img/play-youtube.png'); background-size:100%;z-index:5;";
                             document.getElementById('video-foto-principal').appendChild(a1);
 
                             var li = document.createElement('a');

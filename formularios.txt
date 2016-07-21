@@ -26,7 +26,16 @@
 
 --------------- Faça Parte -------------------------
 <div class="campo01">
-   <label>Nome:</label>[text* your-name]
+   <label>Banda:</label>[text* sua-banda]
+</div>
+<div class="campo01">
+    <label>Site:</label>[url url-site]
+</div>
+<div class="campo01">
+    <label>Facebook:</label>[url url-facebook]
+</div>
+<div class="campo01">
+    <label>Responsável:</label>[url responsavel]
 </div>
 <div class="campo02">
    <label>RG:</label>[text your-rg]
@@ -47,20 +56,20 @@
     <label>Atua&ccedil;&atilde;o:</label>[text text-atuacao]
 </div>
 <div class="campo02">
-    <label>Estilo:</label>[text text-estilo]
+    <label class="estilo">Estilo:</label>[text text-estilo]
 </div>
 <div class="campo01">
-    <label>Site:</label>[url url-site]
+    <label>Usuário:</label>[text text-usuario]
 </div>
-<div class="campo01">
-    <label>Facebook:</label>[url url-facebook]
+<div class="campo02">
+    <label>Senha:</label>[text text-senha]
+</div>
+<div class="campo02">
+    <label class="estilo">Confirme:</label>[text text-confirmacao]
 </div>
 <div class="campo03">
-    <label>Modalidade Escolhida:</label>
-    <a href="http://showbook.com.br/wp/wp-content/uploads/2016/06/ShowBook_MinutaParceria01.docx">[radio radio-788 default:1 "Parceria 1"]</a><a href="http://showbook.com.br/wp/wp-content/uploads/2016/06/ShowBook_MinutaParceria02.docx">[radio radio-788 "Parceria 2"]</a><a href="http://showbook.com.br/wp/wp-content/uploads/2016/06/ShowBook_MinutaParceria03.docx">[radio radio-788 "Parceria 3"]</a>
-</div>
-<div class="campo03">
-    <p>[acceptance aceito-contrato default:on]Eu li e estou de acordo com o contrato de parceria.</p>
+    <label>Clique no ícone para detalhes:</label>
+<a href="http://showbook.com.br/wp/wp-content/uploads/2016/06/ShowBook_MinutaParceria01.docx">[radio radio-788 default:1 "Parceria 1"]</a><a href="http://showbook.com.br/wp/wp-content/uploads/2016/06/ShowBook_MinutaParceria02.docx">[radio radio-788 "Parceria 2"]</a><a href="http://showbook.com.br/wp/wp-content/uploads/2016/06/ShowBook_MinutaParceria03.docx">[radio radio-788 "Parceria 3"]</a>
 </div>
 <div class="campo03">
     [submit class:btn-enviar-2 "QUERO FAZER PARTE!"]

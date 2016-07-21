@@ -1140,20 +1140,20 @@ a.plus{
 	.content-faca-parte{
 		float: left;
 		width: 26.250em;
-		height: 28.750em;
+		height: 30.750em;
 		position: relative;
 		}
 		.content-faca-parte p{
 			font-size: 1em;
 			line-height: 1.5em;
 			color: #999;
-			padding: 0em 0em 1.5em 3.75em;
+			padding: 0em 0em 0.5em 2.75em;
 			text-align: justify;
 		}
 		.logo-faca-parte{
 			position: absolute;
 			left: -.5em;
-			bottom: -7.35em;
+			bottom: -12.35em;
 			width: 30.063em;
 			height: 24.25em;
 			background: url('../img/logo-faca-parte.png') 0em 0em no-repeat;
@@ -1162,19 +1162,19 @@ a.plus{
 		}
 	.form-faca-parte{
 		float: right;
-		width: 24em;
+		width: 27em;
 		height: auto;
-		margin-right: 5em;
+		margin-right: 2em;
 		}
 		.form-faca-parte div.campo01{
 			float: left;
-			width: 24em;
+			width: 27em;
 			margin-bottom: .25em;
 			}
 			.form-faca-parte div.campo01 label,
 			.form-faca-parte div.campo02 label{
 				float: left;
-				width: 4.85em;
+				width: 6.25em;
 				line-height: 2.1em;
 				text-align: right;
 				padding-right:.850em;
@@ -1206,12 +1206,15 @@ a.plus{
 				}
 		.form-faca-parte div.campo02{
 			float: left;
-			width: 12em;
+			width: 13.4em;
 			margin-bottom: .25em;
 			}
 			.form-faca-parte div.campo02 label.cpf{
 				width: 2.85em;
 			}
+            .form-faca-parte div.campo02 label.estilo{
+                width: 4.85em;
+            }
 			.form-faca-parte div.campo02 input{
 					width: 5em;
 				}
@@ -1221,8 +1224,8 @@ a.plus{
 		.form-faca-parte div.campo03{
 			float: left;
 			width: 19em;
-			height: 4em;
-			margin: -.5em 0em .25em 5.85em;
+			height: 6em;
+			margin: -.5em 0em .25em 7.25em;
 			}
 			.form-faca-parte div.campo03 label{
 				float: left;

@@ -88,6 +88,36 @@ function showbook_change_wpseo_metabox_prio( $priority ) {
 }
 add_filter('wpseo_metabox_prio', 'showbook_change_wpseo_metabox_prio');
 
+// Valida os dados passados para o formulário de contato
+function showbook_senha_confirmation_validation_filter( $result, $tag ) {
+    $tag = new WPCF7_Shortcode($tag);
+    echo $tag->name;
+    if ( 'text-senha' == $tag->name ) {
+        $senha = isset( $_POST['text-senha'] ) ? trim( $_POST['text-senha'] ) : '';
+        $confirmacao = isset( $_POST['text-confirmacao'] ) ? trim( $_POST['text-confirmacao'] ) : '';
+
+        if ( $senha != $confirmacao ) {
+            $result->invalidate( $tag, "Verifique a senha e sua confirmação!" );
+        }
+    }
+    return $result;
+}
+add_filter( 'wpcf7_validate_text', 'showbook_senha_confirmation_validation_filter', 20, 2 );
+add_filter( 'wpcf7_validate_text*', 'showbook_senha_confirmation_validation_filter', 20, 2 );
+
+//Adiciona campo do tipo senha ao Contact Form 7
+function cfp($atts, $content = null) {
+    extract(shortcode_atts(array( "id" => "", "title" => "", "pwd" => "" ), $atts));
+    if(empty($id) || empty($title)) return "";
+    $cf7 = do_shortcode('[contact-form-7 id="' . $id . '" title="' . $title . '"]');
+    $pwd = explode(',', $pwd);
+    foreach($pwd as $p) {
+        $p = trim($p);
+        $cf7 = preg_replace('/<input type="text" name="' . $p . '"/usi', '<input type="password" name="' . $p . '"', $cf7);
+    }
+    return $cf7;
+}
+add_shortcode('cfp', 'cfp');
 
 function add_custom_taxonomies_artistas_bares() {
   // Add new "Locations" taxonomy to Posts

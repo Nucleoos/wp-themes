@@ -47,11 +47,16 @@
             <div class="fecha-janela">
                 Fechar
             </div>
-            <a href="#" class="btn-modalidades"> Modalidades de Parceria</a>
         </header>
         <div class="content-faca-parte">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, iste! Aspernatur natus quis cumque molestias harum facilis pariatur, ducimus placeat. Quis minima facilis nihil amet minus consectetur alias nisi aliquam.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis minus facere consequatur molestiae velit eos esse cum autem ea eius.</p>
+            <p>Você Artista, chega de pagar valores absurdos sem nenhum retorno!</p>
+            <p>
+A ShowBook foi criada para promover e divulgar artistas de todo o país. Dispomos de uma equipe multifocal, de profissionais competentes que
+contribuirão com a comunicação de seu dia-a-dia, nas suas redes sociais, gerando conteúdo e na venda de shows.
+Aqui na ShowBook você é dono do seu talento,  nós estamos aqui apenas para levar este seu dom para o mundo!
+Venha fazer parte desse time também. Preencha o formulário ao lado e escolha a melhor parceria que você pode formar conosco!
+            </p>
+            <p>ShowBook, fazendo do seu show um espetáculo!</p>
             <div class="logo-faca-parte"></div>
         </div>
         <div class="form-faca-parte">
