@@ -25,6 +25,7 @@ $events_label_singular = tribe_get_event_label_singular();
 $events_label_plural = tribe_get_event_label_plural();
 
 $event_id = get_the_ID();
+$venue_id = tribe_get_venue_id();
 
 ?>
 
@@ -120,4 +121,136 @@ $event_id = get_the_ID();
 
 	</div><!-- #tribe-events-content -->
 	</div>
+</div>
+
+
+<div class="l3 agenda">
+    <div class="alinha">
+        <header>
+            <h4>Agenda</h4>
+        </header>
+        <div class="exibe-agenda">
+            <a href="javascript:next_agenda();" class="plus">+</a>
+            <div id="agenda-carossel" class="exibe-agenda-hidden">
+                <?php
+                    $m= date("m");
+                    $de= date("d");
+                    $y= date("Y");
+                    $latest_day = '';
+                    $latest_month = '';
+                    $count_month = -1;
+                    $count_day = -1;
+                    $contador = 0;
+                    $encontrou_evento = false;
+                    //foreach( $events as $event ){
+                    while(true){
+                        $data_evento = date('Y-m-d',mktime(0,0,0,$m,($de+$contador),$y));
+                        $events = get_posts(array(
+                            'post_type' => 'tribe_events',
+                            'meta_query' => array(
+                                array(
+                                    'key' => '_EventVenueID', // name of custom field
+                                    'value' => $venue_id,
+                                    'compare' => '='
+                                ),
+                                array(
+                                    'key' => '_EventStartDate',
+                                    'value' => array($data_evento, $data_evento),
+                                    'compare' => 'BETWEEN',
+                                    'type' => 'DATE'
+                                )
+                            ),
+                            'meta_key' => '_EventStartDate',
+                            'orderby' => 'meta_value',
+                            'order' => 'asc',
+                            'nopaging' => true,
+                        ));
+                        //Lógica - Continua o while até achar uma data com evento
+                        //Para casos em que não tem nenhum evento ele verifica até 30 dias
+                        //Após encontrar o primeiro evento, finaliza o while após 7 dias
+                        if (count($events)>0)
+                            $encontrou_evento = true;
+                        $contador++;
+                        if(!$encontrou_evento && $contador < 30){
+                            continue;
+                        }
+                        if($contador>=30){
+                            $encontrou_evento=true;
+                            $contador = 0;
+                            continue;
+                        }
+                        if($encontrou_evento && $contador>=9){
+                            break;
+                        }
+                        $current_month = date_i18n('F', strtotime($data_evento ));
+                        $current_day = date_i18n('d', strtotime($data_evento ));
+                        if($latest_day != $current_day){
+                            $count_day++;
+                        }
+                        if($latest_month != $current_month){
+                            $count_month++;
+                        }
+                        $classe_mes = $count_month%2==0?'mes-a':'mes-b';
+                        $classe_dia = $count_day%2==0?'dia-a':'dia-b';
+                    ?>
+
+                    <?php if($latest_day != $current_day && $latest_day != '') { ?>
+                                </ul>
+                            </div>
+                        </div>
+                    <?php } ?>
+
+                    <?php if($latest_month != $current_month && $latest_month != '') { ?>
+                        </div>
+                    <?php } ?>
+
+                    <?php if($latest_month != $current_month){ ?>
+                        <div class="<?php echo $classe_mes; ?>">
+                            <div class="nome-mes">
+                                <p><?php echo $current_month; ?></p>
+                            </div>
+                    <?php }
+                        if($latest_day != $current_day){
+                    ?>
+                    <!-- -->
+                    <div class="<?php echo $classe_dia; ?>">
+                        <div class="data-mes">
+                            <div class="data-dia"><p><?php echo date_i18n('d', strtotime($data_evento )); ?></p></div>
+                            <div class="data-semana"><p><?php echo date_i18n('l', strtotime($data_evento )); ?></p></div>
+                        </div>
+                        <div class="agenda-detalhe">
+                            <ul>
+                    <?php } ?>
+
+                        <?php foreach($events as $event):
+                            $evento_data = get_field('_EventStartDate', $event->ID);
+                            ?>
+                        <li>
+                            <div class="agrupa-detalhe">
+                                <span><?php echo get_the_post_thumbnail($event->ID); ?></span>
+                                <div class="nome-banda"><p><?php echo get_the_title($event->ID); ?></p></div>
+                                <div class="hora-show"><p><?php echo date_i18n('H\h', strtotime($evento_data)); ?></p></div>
+                                <?php $custo = get_field('_EventCost', $event->ID);
+                                    if($custo != ''){
+                                ?>
+                                    <div class="valor-show"><p>R$ <?php echo ($custo=='0'?'free':$custo) ?></p></div>
+                                <?php } ?>
+                            </div>
+                            <a href="<?php echo get_the_permalink($event->ID); ?>">+</a>
+                        </li>
+
+                    <?php
+                        endforeach;
+                        $latest_day = $current_day;
+                        $latest_month = $current_month;
+                        } ?>
+
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

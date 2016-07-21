@@ -3,6 +3,7 @@
 <?php while ( have_posts() ) : the_post(); ?>
 
 <?php
+    $artista_id = get_the_ID();
 	$album_id = get_field('facebook_album_id');
 	$playlist_id = get_field('youtube_playlist_id');
 	if(isset($album_id) && trim($album_id)!=='') {
@@ -240,16 +241,17 @@ if(isset($playlist_id) && trim($playlist_id)!=='') {
                         $latest_month = '';
                         $count_month = -1;
                         $count_day = -1;
-                        //foreach( $events as $event ){
-                        for($i=0; $i<=14; $i++){
-                            $data_evento = date('Y-m-d',mktime(0,0,0,$m,($de+$i),$y));
+                        $contador = 0;
+                        $encontrou_evento = false;
+                        while(true){
+                            $data_evento = date('Y-m-d',mktime(0,0,0,$m,($de+$contador),$y));
                             $events = get_posts(array(
                                 'post_type' => 'tribe_events',
                                 'meta_query' => array(
                                     array(
-                                        'key' => '_EventVenueID', // name of custom field
-                                        'value' => get_the_ID(),
-                                        'compare' => '='
+                                        'key' => 'artistas', // name of custom field
+                                        'value' => '"' . $artista_id . '"',
+                                        'compare' => 'LIKE'
                                     ),
                                     array(
                                         'key' => '_EventStartDate',
@@ -263,6 +265,23 @@ if(isset($playlist_id) && trim($playlist_id)!=='') {
                                 'order' => 'asc',
                                 'nopaging' => true,
                             ));
+                            //Lógica - Continua o while até achar uma data com evento
+                            //Para casos em que não tem nenhum evento ele verifica até 30 dias
+                            //Após encontrar o primeiro evento, finaliza o while após 7 dias
+                            if (count($events)>0)
+                                $encontrou_evento = true;
+                            $contador++;
+                            if(!$encontrou_evento && $contador < 30){
+                                continue;
+                            }
+                            if($contador>=30){
+                                $encontrou_evento=true;
+                                $contador = 0;
+                                continue;
+                            }
+                            if($encontrou_evento && $contador>=9){
+                                break;
+                            }
                             $current_month = date_i18n('F', strtotime($data_evento ));
                             $current_day = date_i18n('d', strtotime($data_evento ));
                             if($latest_day != $current_day){

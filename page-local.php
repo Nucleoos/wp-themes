@@ -106,9 +106,11 @@
                         $latest_month = '';
                         $count_month = -1;
                         $count_day = -1;
+                        $contador = 0;
+                        $encontrou_evento = false;
                         //foreach( $events as $event ){
-                        for($i=0; $i<=14; $i++){
-                            $data_evento = date('Y-m-d',mktime(0,0,0,$m,($de+$i),$y));
+                        while(true){
+                            $data_evento = date('Y-m-d',mktime(0,0,0,$m,($de+$contador),$y));
                             $events = get_posts(array(
                                 'post_type' => 'tribe_events',
                                 'meta_query' => array(
@@ -129,6 +131,23 @@
                                 'order' => 'asc',
                                 'nopaging' => true,
                             ));
+                            //Lógica - Continua o while até achar uma data com evento
+                            //Para casos em que não tem nenhum evento ele verifica até 30 dias
+                            //Após encontrar o primeiro evento, finaliza o while após 7 dias
+                            if (count($events)>0)
+                                $encontrou_evento = true;
+                            $contador++;
+                            if(!$encontrou_evento && $contador < 30){
+                                continue;
+                            }
+                            if($contador>=30){
+                                $encontrou_evento=true;
+                                $contador = 0;
+                                continue;
+                            }
+                            if($encontrou_evento && $contador>=9){
+                                break;
+                            }
                             $current_month = date_i18n('F', strtotime($data_evento ));
                             $current_day = date_i18n('d', strtotime($data_evento ));
                             if($latest_day != $current_day){

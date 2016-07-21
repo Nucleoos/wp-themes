@@ -91,7 +91,6 @@ jQuery(function($) {
     $('.tooltip').tooltipster({
         theme: 'tooltipster-borderless'
     });
-    setTimeout(next_agenda, 2000, true);
     $('.exibe-agenda').mouseenter(function() {
         parar = true;
     })
@@ -112,18 +111,14 @@ var indo_esquerda = false;
 var margin_agenda = 0;
 var parar = false;
 function next_agenda(loop) {
-    if(!parar || !loop){
-        var dias = jQuery('#agenda-carossel .dia-a').size();
-        dias += jQuery('#agenda-carossel .dia-b').size();
-        var tamanhoTotal = dias * 240;
-        if((Math.abs(margin_agenda) + 720)>=tamanhoTotal || margin_agenda == 0)
-            indo_esquerda = !indo_esquerda;
-        if(indo_esquerda)
-            margin_agenda -= 240;
-        else
-            margin_agenda += 240;
-        jQuery('#agenda-carossel').animate({'margin-left': margin_agenda.toString() + 'px'});
-    }
-    if(loop)
-        setTimeout(next_agenda, 2000, true);
+    var dias = jQuery('#agenda-carossel .dia-a').size();
+    dias += jQuery('#agenda-carossel .dia-b').size();
+    var tamanhoTotal = dias * 240;
+    if((Math.abs(margin_agenda) + 720)>=tamanhoTotal || margin_agenda == 0)
+        indo_esquerda = !indo_esquerda;
+    if(indo_esquerda)
+        margin_agenda -= 240;
+    else
+        margin_agenda += 240;
+    jQuery('#agenda-carossel').animate({'margin-left': margin_agenda.toString() + 'px'});
 }

@@ -59,6 +59,36 @@ function showbook_add_query_vars_filter( $vars ){
 }
 add_filter( 'query_vars', 'showbook_add_query_vars_filter' );
 
+// Esconde o box de SEO de usuários que não são administradores
+if (!current_user_can('administrator')){
+    function hide_post_page_options() {
+        global $post;
+        $hide_post_options = "<style type=\"text/css\">#wpseo_meta, #postexcerpt, #postcustom, #commentstatusdiv { display: none; }</style>";
+        echo $hide_post_options;
+    }
+    add_action( 'admin_head', 'hide_post_page_options');
+}
+
+//Muda o label dos campos de miniatura dos cadastros
+add_action('do_meta_boxes', 'change_image_box');
+function change_image_box()
+{
+    remove_meta_box( 'postimagediv', 'artista', 'side' );
+    add_meta_box('postimagediv', __('Imagem destacada (210x210)'), 'post_thumbnail_meta_box', 'artista', 'side', 'low');
+    remove_meta_box( 'postimagediv', 'tribe_events', 'side' );
+    add_meta_box('postimagediv', __('Imagem destacada (180x180)'), 'post_thumbnail_meta_box', 'tribe_events', 'side', 'low');
+    remove_meta_box( 'postimagediv', 'tribe_venue', 'side' );
+    add_meta_box('postimagediv', __('Imagem destacada (210x165)'), 'post_thumbnail_meta_box', 'tribe_venue', 'side', 'low');
+}
+
+// Modifica a prioridade do campo Yoast SEO
+function showbook_change_wpseo_metabox_prio( $priority ) {
+    $priority = 'low';
+    return $priority;
+}
+add_filter('wpseo_metabox_prio', 'showbook_change_wpseo_metabox_prio');
+
+
 function add_custom_taxonomies_artistas_bares() {
   // Add new "Locations" taxonomy to Posts
   register_taxonomy('regiao', 'tribe_venue', array(
@@ -180,7 +210,7 @@ if(function_exists("register_field_group"))
 		),
 		'options' => array (
 			'position' => 'normal',
-			'layout' => 'no_box',
+			'layout' => 'default',
 			'hide_on_screen' => array (
 			),
 		),
@@ -256,7 +286,7 @@ if(function_exists("register_field_group"))
 		),
 		'options' => array (
 			'position' => 'normal',
-			'layout' => 'no_box',
+			'layout' => 'default',
 			'hide_on_screen' => array (
 			),
 		),
@@ -350,7 +380,7 @@ if(function_exists("register_field_group"))
 		),
 		'options' => array (
 			'position' => 'normal',
-			'layout' => 'no_box',
+			'layout' => 'default',
 			'hide_on_screen' => array (
 			),
 		),
