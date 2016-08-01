@@ -1153,7 +1153,7 @@ a.plus{
 		.logo-faca-parte{
 			position: absolute;
 			left: -.5em;
-			bottom: -12.35em;
+			bottom: -17.35em;
 			width: 30.063em;
 			height: 24.25em;
 			background: url('../img/logo-faca-parte.png') 0em 0em no-repeat;
@@ -1197,6 +1197,10 @@ a.plus{
 				}
 				.form-faca-parte div.campo01 input{
 					width: 17em;
+				}
+                .form-faca-parte div.campo01 select{
+					width: 14.5em;
+                    font-size: 20px;
 				}
 				.form-faca-parte div.campo01 input:focus,
 				.form-faca-parte div.campo02 input:focus{

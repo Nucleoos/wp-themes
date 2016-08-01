@@ -21,7 +21,7 @@ function showbook_theme_scripts() {
 	wp_enqueue_script('scrollbox', get_template_directory_uri() . '/js/jquery.scrollbox.js', array('jquery'), '1.0');
 	wp_enqueue_script('tooltip-showbook-script', get_template_directory_uri() . '/js/tooltipster.bundle.js', array('jquery'), '1.0');
     wp_enqueue_script('jquery-ui-datepicker');
-    wp_enqueue_script('showbook-maps-script', 'http://maps.google.com/maps/api/js?sensor=false&libraries=places', array('jquery'), '1.0');
+    wp_enqueue_script('showbook-maps-script', 'http://maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyAUA2WnCbkxbaqd-mD-ejsmGbBZUfTYn-c', array('jquery'), '1.0');
     wp_enqueue_script('showbook-locationpicker-script', get_template_directory_uri() . '/js/locationpicker.jquery.min.js', array('showbook-maps-script'), '1.0');
 	wp_enqueue_script('main-script', get_template_directory_uri() . '/js/main.js', array('jquery', 'jquery-ui-datepicker', 'showbook-locationpicker-script'), '1.0');
 }
@@ -119,6 +119,51 @@ function cfp($atts, $content = null) {
 }
 add_shortcode('cfp', 'cfp');
 
+
+//Salva dados do contrate artistas
+function registra_interesse_artista(){
+    global $wpdb;
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $data = $_POST['data'];
+    $telefone = $_POST['telefone'];
+    $latitude = $_POST['us6-lat'];
+    $longitude = $_POST['us6-lon'];
+    $artista = $_POST['artista'];
+
+    $values = array(
+        'post_title'=> $nome.' - Interessado no artista: '.$artista,
+        'post_status'=>'pending',
+        'post_author'=> 1,
+        'post_type'=>'contato_artista',
+        'post_content'=> 'Interesse registrado para o artista: ' . $artista .
+         '<br />Nome: ' . $nome .
+         '<br />E-mail para contato: ' . $email .
+         '<br />Data do evento: ' . $data .
+         '<br />Telefone para contato: ' . $telefone,
+    );
+
+    $post_id = wp_insert_post($values, true);
+    if($post_id > 0){
+        $value = array(
+            'address'=>'Endereço Selecionado',
+            'lat'=>$latitude,
+            'lng'=>$longitude,
+        );
+        update_field('local_do_evento', $value, $post_id );
+        $headers = array('Content-Type: text/html; charset=UTF-8');
+        wp_mail('daniel@showbook.com.br,contato@showbook.com.br', $values['post_title'], $values['post_content'], $headers);
+        echo "Obrigado por seu interesse! Entraremos em contato!";
+    }
+    else {
+        echo "Interesse registrado.";
+    }
+    die();
+}
+add_action('wp_ajax_RegistraInteresse', 'registra_interesse_artista');
+add_action('wp_ajax_nopriv_RegistraInteresse', 'registra_interesse_artista');
+
+
 function add_custom_taxonomies_artistas_bares() {
   // Add new "Locations" taxonomy to Posts
   register_taxonomy('regiao', 'tribe_venue', array(
@@ -148,7 +193,7 @@ function add_custom_taxonomies_artistas_bares() {
 }
 add_action( 'init', 'add_custom_taxonomies_artistas_bares', 0 );
 
-
+// Registrando Cadastro de artistas
 add_action( 'init', 'cptui_register_my_cpts_artista' );
 function cptui_register_my_cpts_artista() {
 	$labels = array(
@@ -180,6 +225,40 @@ function cptui_register_my_cpts_artista() {
 
 // End of cptui_register_my_cpts_artista()
 }
+
+// Registrando contatos que o artista recebeu via site
+add_action( 'init', 'cptui_register_my_cpts_contato_artista' );
+function cptui_register_my_cpts_contato_artista() {
+	$labels = array(
+		"name" => __( 'Contatos de Artista', 'showbook' ),
+		"singular_name" => __( 'Contato Artista', 'showbook' ),
+		);
+
+	$args = array(
+		"label" => __( 'Contatos de Artista', 'showbook' ),
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"show_ui" => true,
+		"show_in_rest" => false,
+		"rest_base" => "",
+		"has_archive" => false,
+		"show_in_menu" => true,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => array( "slug" => "contato_artista", "with_front" => true ),
+		"query_var" => true,
+
+		"supports" => array( "title", "editor" ),
+	);
+	register_post_type( "contato_artista", $args );
+
+// End of cptui_register_my_cpts_contato_artista()
+}
+
+
 
 if(function_exists("register_field_group"))
 {
@@ -416,6 +495,43 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 0,
 	));
+
+    //Registra campo local do evento para os interessados no artista
+    register_field_group(array (
+        'id' => 'acf_local_evento_contato_artista',
+        'title' => 'asfdsAF',
+        'fields' => array (
+            array (
+                'key' => 'field_579f5ca642034',
+                'label' => 'Local do evento',
+                'name' => 'local_do_evento',
+                'type' => 'google_map',
+                'center_lat' => '',
+                'center_lng' => '',
+                'zoom' => '',
+                'height' => '',
+            ),
+        ),
+        'location' => array (
+            array (
+                array (
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'contato_artista',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array (
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array (
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
 }
 
 

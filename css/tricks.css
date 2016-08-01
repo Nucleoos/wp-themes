@@ -292,3 +292,45 @@ div.evento .conteudo-evento {
     margin-top: 20px;
     margin-bottom: 80px;
 }
+.modal-parceria {
+    display:none;
+    position: absolute;
+    left: 50%;
+    top: 1.25em;
+    height: auto;
+    padding: 1em;
+    margin-left: -30em;
+    border-radius: .5em;
+    background: #FFF;
+    z-index: 150;
+}
+.modal-parceria img {
+    max-width: 930px;
+}
+.fecha-parceria {
+    float: right;
+    width: 1.563em;
+    height: 1.813em;
+    overflow: hidden;
+    text-indent: -9999px;
+    background: url('../img/btn-fechar-janela.png') 0em 0em no-repeat;
+    background-size: auto 100%;
+    cursor: pointer;
+    -webkit-transition: all .25s ease;
+       -moz-transition: all .25s ease;
+        -ms-transition: all .25s ease;
+         -o-transition: all .25s ease;
+            transition: all .25s ease;
+    -webkit-transform: scale(1);
+       -moz-transform: scale(1);
+        -ms-transform: scale(1);
+         -o-transform: scale(1);
+            transform: scale(1);
+    }
+.fecha-parceria:hover{
+    -webkit-transform: scale(.95);
+       -moz-transform: scale(.95);
+        -ms-transform: scale(.95);
+         -o-transform: scale(.95);
+            transform: scale(.95);
+}

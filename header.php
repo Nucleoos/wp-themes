@@ -40,6 +40,24 @@
     	</div>
     </header>
 
+    <div id="div-parceria-1" class="modal-parceria">
+        <div id="fecha-parceria-1" class="fecha-parceria">
+            Fechar
+        </div>
+        <img src="<?php echo get_template_directory_uri() . '/img/parceria-1.jpg' ?>" />
+    </div>
+    <div id="div-parceria-2" class="modal-parceria">
+        <div id="fecha-parceria-2" class="fecha-parceria">
+            Fechar
+        </div>
+        <img src="<?php echo get_template_directory_uri() . '/img/parceria-2.jpg' ?>" />
+    </div>
+    <div id="div-parceria-3" class="modal-parceria">
+        <div id="fecha-parceria-3" class="fecha-parceria">
+            Fechar
+        </div>
+        <img src="<?php echo get_template_directory_uri() . '/img/parceria-3.jpg' ?>" />
+    </div>
 
     <div class="faca-parte">
         <header>

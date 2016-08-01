@@ -85,7 +85,7 @@ if(isset($playlist_id) && trim($playlist_id)!=='') {
                 var request = gapi.client.youtube.playlistItems.list({
                     part: 'snippet',
                     playlistId: '<?php echo $playlist_id ?>',
-                    maxResults: 9
+                    maxResults: 8
                 });
 
                 request.execute(function(response) {
@@ -120,15 +120,15 @@ if(isset($playlist_id) && trim($playlist_id)!=='') {
     <script src="https://apis.google.com/js/client.js?onload=onGoogleLoad"></script>
 <?php } ?>
 
-	<div class="l1">
-		<div class="artista-banner">
-			<ul>
-				<li>
-					<?php echo wp_get_attachment_image(get_field('banner_principal'), 'full'); ?>
-				</li>
-			</ul>
-		</div>
-	</div>
+    <div class="l1">
+        <div class="artista-banner">
+            <ul>
+                <li>
+                    <?php echo wp_get_attachment_image(get_field('banner_principal'), 'full'); ?>
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <div id="modal-mapa" style="display:none; position:absolute; top:30%; left:30%; width:600px;height:450px; z-index:300;background-color:white; padding:20px;box-shadow: 4px 4px 40px 6px rgba(0,0,0,0.75);">
         <label style="font-size:22px;">Arraste o marcador para o local do evento</label>
@@ -144,25 +144,27 @@ if(isset($playlist_id) && trim($playlist_id)!=='') {
                 <div class="quero-show">
                     <div class="btn-local" id="contrate-mapa" style="float:right;">Local</div>
                     <div class="form-dados">
-                        <form action="">
+                        <form id="formulario-contrate" action="/wp-admin/admin-ajax.php">
                             <input type="hidden" id="us6-lat" name="us6-lat" />
                             <input type="hidden" id="us6-lon" name="us6-lon" />
                             <div class="campo01">
                                 <label>Nome:</label>
-                                <input type="text" name="nome">
+                                <input id="contrate-nome" type="text" name="nome" required>
                             </div>
                             <div class="campo01">
                                 <label>E-mail:</label>
-                                <input type="text" name="email">
+                                <input id="contrate-email" type="email" name="email" required>
                             </div>
                             <div class="campo01">
                                 <label>Dia</label>
-                                <input type="text" name="data" id="contrate-data">
+                                <input type="text" name="data" id="contrate-data" required>
                             </div>
                             <div class="campo01">
                                 <label>Telefone:</label>
-                                <input type="text" name="telefone">
+                                <input id="contrate-telefone" type="phone" name="telefone" required>
                             </div>
+                            <input type="hidden" name="artista" value="<?php the_title(); ?>" />
+                            <input type="hidden" name="action" value="RegistraInteresse"/>
                             <div class="campo01"><input type="submit"  name="submit" value="QUERO ESSE SHOW"  class="btn-quero-show"></div>
                         </form>
                     </div>

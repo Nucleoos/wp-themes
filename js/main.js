@@ -97,6 +97,47 @@ jQuery(function($) {
     $('.exibe-agenda').mouseleave(function() {
         parar = false;
     })
+    $('#a-parceria-1 span.wpcf7-list-item-label').click(function(){
+        $('#div-parceria-1').toggle();
+    });
+    $('#a-parceria-2 span.wpcf7-list-item-label').click(function(){
+        $('#div-parceria-2').toggle();
+    });
+    $('#a-parceria-3 span.wpcf7-list-item-label').click(function(){
+        $('#div-parceria-3').toggle();
+    });
+    $('#fecha-parceria-1').click(function(){
+        $('#div-parceria-1').toggle();
+    });
+    $('#fecha-parceria-2').click(function(){
+        $('#div-parceria-2').toggle();
+    });
+    $('#fecha-parceria-3').click(function(){
+        $('#div-parceria-3').toggle();
+    });
+
+    $('#formulario-contrate').submit(function(){
+        $('#contrate-submit').prop('disabled', true);
+        var contrateArtista = jQuery(this).serialize();
+        jQuery.ajax({
+            type:"POST",
+            url: "/wp/wp-admin/admin-ajax.php",
+            data: contrateArtista,
+            success:function(data){
+                $('#contrate-nome').val('');
+                $('#contrate-email').val('');
+                $('#contrate-data').val('');
+                $('#contrate-telefone').val('');
+                alert(data);
+                $('#contrate-submit').prop('disabled', false);
+            },
+            error: function(erro){
+                alert(erro);
+                $('#contrate-submit').prop('disabled', false);
+            }
+        });
+        return false;
+    })
 });
 
 function next_artista() {

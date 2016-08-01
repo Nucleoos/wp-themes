@@ -81,6 +81,7 @@ if(isset($regiao)){
 	);
 }
 $alltags = get_terms('regiao', $args_term);
+$found = false;
 if ($alltags){
   foreach( $alltags as $tag ) {
     $args=array(
@@ -99,7 +100,6 @@ if ($alltags){
 	if(isset($pesquisa)){
 		$args['s'] = $pesquisa;
 	}
-	$found = false;
 	$my_query = null;
     $my_query = new WP_Query($args);
     if( $my_query->have_posts() ) {
