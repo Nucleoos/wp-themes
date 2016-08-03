@@ -91,7 +91,6 @@ add_filter('wpseo_metabox_prio', 'showbook_change_wpseo_metabox_prio');
 // Valida os dados passados para o formulário de contato
 function showbook_senha_confirmation_validation_filter( $result, $tag ) {
     $tag = new WPCF7_Shortcode($tag);
-    echo $tag->name;
     if ( 'text-senha' == $tag->name ) {
         $senha = isset( $_POST['text-senha'] ) ? trim( $_POST['text-senha'] ) : '';
         $confirmacao = isset( $_POST['text-confirmacao'] ) ? trim( $_POST['text-confirmacao'] ) : '';

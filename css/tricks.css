@@ -180,6 +180,13 @@ div.wpcf7-mail-sent-ng {
     background-color: blanchedalmond;
     padding: 21px;
 }
+div.wpcf7-mail-sent-ok {
+    border:none;
+    float: left;
+    color: #398f14;
+    background-color: blanchedalmond;
+    padding: 21px;
+}
 div.wpcf7-validation-errors {
     border:none;
     float: left;
@@ -187,8 +194,13 @@ div.wpcf7-validation-errors {
     background-color: blanchedalmond;
     padding: 21px;
 }
+form.form-faca-parte span.wpcf7-not-valid-tip {
+    margin-left: 26%;
+}
 span.wpcf7-not-valid-tip {
-    display: inline;
+    display: block;
+    clear: both;
+    margin-left: 31%;
 }
 
 div.evento .imagem-evento img {
